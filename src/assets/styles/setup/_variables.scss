@@ -7,12 +7,24 @@ $clr5: #dff0ea;
 $clr6: #fff;
 $clr7: #222;
 
+$clr1:#000000;
+$clr2:#0095F6;
+
+$gray1:#737373;
+$gray2:#EFEFEF;
+$gray3:#C7C7C7C7;
+
+/*
 $gray1: #ddd;
 $gray2: #aaa;
 $gray3: #777;
 $gray4: #333;
+*/
 
 // Breakpoints
 $mobile-breakpoint: 460px;
 $narrow-breakpoint: 720px;
 $normal-breakpoint: 960px;
+
+//fonts
+$font-family: BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif
