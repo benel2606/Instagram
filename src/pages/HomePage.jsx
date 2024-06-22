@@ -1,9 +1,15 @@
+import { useNavigate } from "react-router"
+import { useSelector } from "react-redux"
+import { LeftSideBar } from "../cmps/LeftSideBar"
+import { StoryIndex } from "./StoryIndex"
 
 export function HomePage() {
-    return (
-        <section>
-            <h1>Home sweet Home</h1>
-        </section >
-    )
-}
+  const user = useSelector((storeState) => storeState.userModule.user)
+  const navigate = useNavigate()
 
+  return (
+    <header className="home-page">
+      <StoryIndex />
+    </header>
+  )
+}
