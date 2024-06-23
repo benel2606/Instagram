@@ -1,8 +1,8 @@
 import { MessageList } from "../cmps/Message/MessageList"
-export function MessageList() {
+export function MessageIndex() {
   return (
-    <section className="message-list">
-      <h1>Message List</h1>
+    <section className="message-index">
+      <h1>Message Index</h1>
       <MessageList />
     </section>
   )
