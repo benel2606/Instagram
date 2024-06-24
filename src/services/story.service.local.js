@@ -14,20 +14,19 @@ export const storyService = {
     addStoryMsg
 }
 window.cs = storyService
+_createStories()
 
-
-async function query(filterBy = { txt: '', price: 0 }) {
+async function query(filterBy = {}) {
     var stories = await storageService.query(STORAGE_KEY)
-    if (filterBy.txt) {
-        const regex = new RegExp(filterBy.txt, 'i')
-        stories = stories.filter(story => regex.test(story.vendor) || regex.test(story.description))
-    }
-    if (filterBy.price) {
-        stories = stories.filter(story => story.price <= filterBy.price)
-    }
-    
+    // if (filterBy.txt) {
+    //     const regex = new RegExp(filterBy.txt, 'i')
+    //     stories = stories.filter(story => regex.test(story.vendor) || regex.test(story.description))
+    // }
+    // if (filterBy.price) {
+    //     stories = stories.filter(story => story.price <= filterBy.price)
+    // }
     // Return just preview info about the boards
-    stories = stories.map(({ _id, vendor, price, owner }) => ({ _id, vendor, price, owner }))
+    // stories = stories.map(({ _id, vendor, price, owner }) => ({ _id, vendor, price, owner }))
     return stories
 }
 
@@ -84,10 +83,56 @@ function getEmptyStory() {
     }
 }
 
-
-// TEST DATA
-// storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))
-
+function _createStories() {
+    let stories = utilService.loadFromStorage(STORAGE_KEY)
+    if (!stories || !stories.length) {
+        stories=
+        [{
+            _id: "s101",
+            txt: "Best trip ever",
+            imgUrl: "/profile/p1/story/s1.jpg", 
+            by: {
+              _id: "u101",
+              fullname: "Maurizio Ghiraldi",
+              imgUrl: "/profile/p1/p1.jpg"
+            },
+            comments: [
+              {
+                id: "c101",
+                by: {
+                  _id: "u105",
+                  fullname: "Kingsly Traylen",
+                  imgUrl: "/profile/p5.jpg"
+                },
+                txt: "good one!",
+              },
+              {
+                id: "c1002",
+                by: {
+                  _id: "u106",
+                  fullname: "Sabina Duxbury",
+                  imgUrl: "/profile/p5.jpg"
+                },
+                txt: "Wow!",
+              }
+            ],
+            likedBy: [
+              {
+                _id: "u105",
+                fullname: "Kingsly Traylen",
+                imgUrl: "/profile/p5.jpg"
+              },
+              {
+                _id: "u106",
+                fullname: "Sabina Duxbury",
+                imgUrl: "/profile/p5.jpg"
+              }
+            ],
+            tags: ["fun", "romantic"]
+          }]
+        }
+        utilService.saveToStorage(STORAGE_KEY, stories)
+    }
 
 
 

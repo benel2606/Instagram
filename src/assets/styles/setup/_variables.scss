@@ -9,6 +9,7 @@ $clr7: #222;
 
 $clr1:#000000;
 $clr2:#0095F6;
+$clr3:#dbdbdb;
 
 $gray1:#737373;
 $gray2:#EFEFEF;
@@ -27,4 +28,7 @@ $narrow-breakpoint: 720px;
 $normal-breakpoint: 960px;
 
 //fonts
-$font-family: BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif
+$font-family: BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+
+//width
+$sidebar-medium-width:244px

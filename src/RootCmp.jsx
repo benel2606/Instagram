@@ -1,5 +1,5 @@
 import React from "react"
-import { Routes, Route } from "react-router"
+import { Routes, Route } from "react-router-dom"
 import { LeftSideBar } from "./cmps/LeftSideBar.jsx"
 import { StoryIndex } from "./pages/StoryIndex.jsx"
 import { ExploreIndex } from "./pages/ExploreIndex.jsx"
@@ -10,9 +10,9 @@ export function RootCmp() {
     <main className="root-app">
       <LeftSideBar />
       <Routes>
-        <Route path="/Instagram" element={<StoryIndex />} />
-        <Route path="/Instagram/explore" element={<ExploreIndex />} />
-        <Route path="/Instagram/inbox" element={<MessageIndex />} />
+        <Route path="/" element={<StoryIndex />} />
+        <Route path="explore" element={<ExploreIndex />} />
+        <Route path="inbox" element={<MessageIndex />} />
       </Routes>
     </main>
   )

@@ -1,0 +1,8 @@
+.explore-index{
+    // width: calc(100% - $sidebar-medium-width);
+    display: flex;
+    grid-template-columns: 60% 40%;
+    height: 100%;
+    justify-content: center;
+    margin: 2.76rem auto;
+}
