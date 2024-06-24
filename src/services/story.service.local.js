@@ -90,7 +90,7 @@ function _createStories() {
         [{
             _id: "s101",
             txt: "Best trip ever",
-            imgUrl: "/profile/p1/story/s1.jpg", 
+            imgUrl: "/profile/p1/story/s3.jpg", 
             by: {
               _id: "u101",
               fullname: "Maurizio Ghiraldi",
@@ -134,7 +134,151 @@ function _createStories() {
               }
             ],
             tags: ["fun", "romantic"]
-          }]
+          },
+          {
+            _id: "s102",
+            txt: "sport for life!",
+            imgUrl: "/profile/p6/story/s1.jpg", 
+            by: {
+              _id: "u106",
+              fullname: "Sabina Duxbury",
+              username: "Sabina_Dux28",
+              imgUrl: "/profile/p6/p6.jpg"
+            },
+            comments: [
+              {
+                id: "c101",
+                by: {
+                  _id: "u105",
+                  fullname: "Kingsly Traylen",
+                  username: "Kingsly123",
+                  imgUrl: "/profile/p5.jpg"
+                },
+                txt: "good one!",
+              },
+              {
+                id: "c1002",
+                by: {
+                  _id: "u106",
+                  fullname: "Maurizio Ghiraldi",
+                  username: "Maurizio.Ghir1",
+                  imgUrl: "/profile/p1.jpg"
+                },
+                txt: "Wow!",
+              }
+            ],
+            likedBy: [
+              {
+                _id: "u105",
+                fullname: "Kingsly Traylen",
+                username: "Kingsly123",
+                imgUrl: "/profile/p5.jpg"
+              },
+              {
+                _id: "u106",
+                fullname: "Sabina Duxbury",
+                username: "Sabina_Dux28",
+                imgUrl: "/profile/p5.jpg"
+              }
+            ],
+            tags: ["sport", "romantic"]
+          },
+          {
+            _id: "s103",
+            txt: "Best trip ever",
+            imgUrl: "/profile/p2/story/s2.jpg", 
+            by: {
+              _id: "u102",
+              fullname: "Lorry Tenby",
+              username: "Lorryyyy",
+              imgUrl: "/profile/p2/p2.jpg"
+            },
+            comments: [
+              {
+                id: "c101",
+                by: {
+                  _id: "u105",
+                  fullname: "Kingsly Traylen",
+                  username: "Kingsly123",
+                  imgUrl: "/profile/p5.jpg"
+                },
+                txt: "good one!",
+              },
+              {
+                id: "c1002",
+                by: {
+                  _id: "u106",
+                  fullname: "Sabina Duxbury",
+                  username: "Sabina_Dux28",
+                  imgUrl: "/profile/p5.jpg"
+                },
+                txt: "Wow!",
+              }
+            ],
+            likedBy: [
+              {
+                _id: "u105",
+                fullname: "Kingsly Traylen",
+                username: "Kingsly123",
+                imgUrl: "/profile/p5.jpg"
+              },
+              {
+                _id: "u106",
+                fullname: "Sabina Duxbury",
+                username: "Sabina_Dux28",
+                imgUrl: "/profile/p5.jpg"
+              }
+            ],
+            tags: ["fun", "romantic"]
+          }
+        ,{
+          _id: "s104",
+          txt: "Love",
+          imgUrl: "/profile/p4/story/s1.jpg", 
+          by: {
+            _id: "u104",
+            fullname: "Cort Guion",
+            username: "Cort258",
+            imgUrl: "/profile/p4/p4.jpg"
+          },
+          comments: [
+            {
+              id: "c101",
+              by: {
+                _id: "u105",
+                fullname: "Kingsly Traylen",
+                username: "Kingsly123",
+                imgUrl: "/profile/p5.jpg"
+              },
+              txt: "good one!",
+            },
+            {
+              id: "c1002",
+              by: {
+                _id: "u106",
+                fullname: "Sabina Duxbury",
+                username: "Sabina_Dux28",
+                imgUrl: "/profile/p5.jpg"
+              },
+              txt: "Wow!",
+            }
+          ],
+          likedBy: [
+            {
+              _id: "u105",
+              fullname: "Kingsly Traylen",
+              username: "Kingsly123",
+              imgUrl: "/profile/p5.jpg"
+            },
+            {
+              _id: "u106",
+              fullname: "Sabina Duxbury",
+              username: "Sabina_Dux28",
+              imgUrl: "/profile/p5.jpg"
+            }
+          ],
+          tags: ["fun", "romantic"]
+        }]
         }
         utilService.saveToStorage(STORAGE_KEY, stories)
     }
