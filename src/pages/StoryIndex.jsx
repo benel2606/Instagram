@@ -17,9 +17,10 @@ export function StoryIndex() {
   if (!stories || !stories.length) return <div>Loading...</div>
   return (
     <section className="story-index">
-      <h1>Story Index</h1>
+      <div className="container">
+        <StoryList stories={stories} />
+      </div>
       {/* <img src={`src/assets/img${stories[0].imgUrl}`} /> */}
-      <StoryList />
     </section>
   )
 }

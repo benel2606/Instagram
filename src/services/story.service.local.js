@@ -94,6 +94,7 @@ function _createStories() {
             by: {
               _id: "u101",
               fullname: "Maurizio Ghiraldi",
+              username: "Maurizio.Ghir1",
               imgUrl: "/profile/p1/p1.jpg"
             },
             comments: [
@@ -102,6 +103,7 @@ function _createStories() {
                 by: {
                   _id: "u105",
                   fullname: "Kingsly Traylen",
+                  username: "Kingsly123",
                   imgUrl: "/profile/p5.jpg"
                 },
                 txt: "good one!",
@@ -111,6 +113,7 @@ function _createStories() {
                 by: {
                   _id: "u106",
                   fullname: "Sabina Duxbury",
+                  username: "Sabina_Dux28",
                   imgUrl: "/profile/p5.jpg"
                 },
                 txt: "Wow!",
@@ -120,11 +123,13 @@ function _createStories() {
               {
                 _id: "u105",
                 fullname: "Kingsly Traylen",
+                username: "Kingsly123",
                 imgUrl: "/profile/p5.jpg"
               },
               {
                 _id: "u106",
                 fullname: "Sabina Duxbury",
+                username: "Sabina_Dux28",
                 imgUrl: "/profile/p5.jpg"
               }
             ],

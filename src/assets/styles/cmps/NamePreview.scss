@@ -1,0 +1,31 @@
+.name-preview{
+    align-items: center;
+    display: flex;
+    padding-left: 4px;
+    justify-content: space-between;
+}
+
+.name-preview img{
+    border-radius: 50%;
+    cursor: pointer;
+    height: 42px;
+    object-fit: cover;
+    width: 42px;
+    margin-right: 12px;
+}
+.name-preview .conatiner{
+    display: flex;
+    height: 56px;
+    // justify-content: space-between;
+    align-items: center;
+}
+.name-preview a{
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0 5px;
+   
+}
+.name-preview span{
+  color:$clr4-second-txt;
+}
