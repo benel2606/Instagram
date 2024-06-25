@@ -6,7 +6,7 @@ export function StoryPreview({ story }) {
       <header>
         <NamePreview by={story.by} />
       </header>
-      <img src={`src/assets/img${story.imgUrl}`} />
+      <img src={`/img${story.imgUrl}`} />
       <footer>
         <ActionList />
       </footer>
