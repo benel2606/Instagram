@@ -1,9 +1,15 @@
 import { NamePreview } from "../NamePreview"
+import { ActionList } from "../ActionList"
 export function StoryPreview({ story }) {
   return (
     <header className="story-preview">
-      <NamePreview by={story.by} />
+      <header>
+        <NamePreview by={story.by} />
+      </header>
       <img src={`src/assets/img${story.imgUrl}`} />
+      <footer>
+        <ActionList />
+      </footer>
     </header>
   )
 }
