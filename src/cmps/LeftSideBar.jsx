@@ -1,51 +1,70 @@
 // import { useNavigate } from "react-router"
 import { GoHome, GoSearch } from "react-icons/go"
-import { MdOutlineExplore } from "react-icons/md"
-import { RiMessengerLine, RiAddBoxLine } from "react-icons/ri"
+import { MdOutlineExplore, MdExplore } from "react-icons/md"
+import { RiMessengerLine, RiMessengerFill, RiAddBoxLine } from "react-icons/ri"
 import { IoMdHeartEmpty } from "react-icons/io"
 import { CgProfile } from "react-icons/cg"
-import { NavLink, useNavigate } from "react-router-dom"
+import { NavLink, useLocation, useNavigate } from "react-router-dom"
 import { GoHomeFill } from "react-icons/go"
 
 export function LeftSideBar() {
   const navigate = useNavigate()
+  const location = useLocation()
   function onGoto(path) {
     console.log("onGoto")
     navigate(`/Instagram/${path}`)
   }
+  const isActive = (path) => location.pathname == path
+  console.log(location)
   return (
     <header className="left-side-bar">
       <nav>
         <div className="logo-container">
           <NavLink className="logo" to="">
-            <img src="./src/assets/img/logo/instagram-log.png" />
+            <img src="img/logo/instagram-log.png" />
           </NavLink>
         </div>
-
-        <NavLink className="sidebar-btn" to="">
+        <NavLink className={`sidebar-btn`} to="">
           <span className="sidbar-icon">
-            <GoHomeFill className="icons" />
+            {isActive("/") ? (
+              <GoHomeFill className="icons" />
+            ) : (
+              <GoHome className="icons" />
+            )}
           </span>
           <span className="sidbar-name">Home</span>
         </NavLink>
 
-        <NavLink className="sidebar-btn">
-          <span className="sidbar-icon">
-            <GoSearch className="icons" />
+        <NavLink className="sidebar-btn" to="">
+          <span
+            className={`material-symbols-outlined ${
+              isActive("/") ? "fill" : ""
+            }`}
+          >
+            search
           </span>
           <span className="sidbar-name">Search</span>
         </NavLink>
 
         <NavLink className="sidebar-btn" to="explore">
           <span className="sidbar-icon">
-            <MdOutlineExplore className="icons" />
+            {isActive("/explore") ? (
+              <MdExplore className="icons" />
+            ) : (
+              <MdOutlineExplore className="icons" />
+            )}
           </span>
+          {/* <span className={`material-symbols-outlined ${isActive("/explore") ? "fill" : ""}`}> explore </span>*/}
           <span className="sidbar-name">Explore</span>
         </NavLink>
 
         <NavLink className="sidebar-btn" to="inbox">
           <span className="sidbar-icon">
-            <RiMessengerLine className="icons" />
+            {isActive("/inbox") ? (
+              <RiMessengerFill className="icons" />
+            ) : (
+              <RiMessengerLine className="icons" />
+            )}
           </span>
           <span className="sidbar-name">Messages</span>
         </NavLink>

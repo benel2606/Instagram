@@ -44,7 +44,12 @@ async function save(story) {
     if (story._id) {
         const storyToSave = {
             _id : story._id,
-            price : story.price
+            txt : story.txt,
+            imgUrl: story.imgUrl, 
+            by: story.by,
+            comments: story.comments,
+            likedBy: story.likedBy,
+            tags: story.tags
         }
         savedStory = await storageService.put(STORAGE_KEY, storyToSave)
     } else {
@@ -104,7 +109,7 @@ function _createStories() {
                   _id: "u105",
                   fullname: "Kingsly Traylen",
                   username: "Kingsly123",
-                  imgUrl: "/profile/p5.jpg"
+                  imgUrl: "/profile/p5/p5.jpg"
                 },
                 txt: "good one!",
               },
@@ -114,7 +119,7 @@ function _createStories() {
                   _id: "u106",
                   fullname: "Sabina Duxbury",
                   username: "Sabina_Dux28",
-                  imgUrl: "/profile/p5.jpg"
+                  imgUrl:  "/profile/p6/p6.jpg"
                 },
                 txt: "Wow!",
               }
@@ -124,13 +129,13 @@ function _createStories() {
                 _id: "u105",
                 fullname: "Kingsly Traylen",
                 username: "Kingsly123",
-                imgUrl: "/profile/p5.jpg"
+                imgUrl:  "/profile/p5/p5.jpg"
               },
               {
                 _id: "u106",
                 fullname: "Sabina Duxbury",
                 username: "Sabina_Dux28",
-                imgUrl: "/profile/p5.jpg"
+                imgUrl:  "/profile/p6/p6.jpg"
               }
             ],
             tags: ["fun", "romantic"]
@@ -152,7 +157,7 @@ function _createStories() {
                   _id: "u105",
                   fullname: "Kingsly Traylen",
                   username: "Kingsly123",
-                  imgUrl: "/profile/p5.jpg"
+                  imgUrl:  "/profile/p5/p5.jpg"
                 },
                 txt: "good one!",
               },
@@ -162,7 +167,7 @@ function _createStories() {
                   _id: "u106",
                   fullname: "Maurizio Ghiraldi",
                   username: "Maurizio.Ghir1",
-                  imgUrl: "/profile/p1.jpg"
+                  imgUrl:  "/profile/p6/p6.jpg"
                 },
                 txt: "Wow!",
               }
@@ -172,13 +177,13 @@ function _createStories() {
                 _id: "u105",
                 fullname: "Kingsly Traylen",
                 username: "Kingsly123",
-                imgUrl: "/profile/p5.jpg"
+                imgUrl:  "/profile/p5/p5.jpg"
               },
               {
                 _id: "u106",
                 fullname: "Sabina Duxbury",
                 username: "Sabina_Dux28",
-                imgUrl: "/profile/p5.jpg"
+                imgUrl:  "/profile/p6/p6.jpg"
               }
             ],
             tags: ["sport", "romantic"]
@@ -200,7 +205,7 @@ function _createStories() {
                   _id: "u105",
                   fullname: "Kingsly Traylen",
                   username: "Kingsly123",
-                  imgUrl: "/profile/p5.jpg"
+                  imgUrl:  "/profile/p5/p5.jpg"
                 },
                 txt: "good one!",
               },
@@ -210,7 +215,7 @@ function _createStories() {
                   _id: "u106",
                   fullname: "Sabina Duxbury",
                   username: "Sabina_Dux28",
-                  imgUrl: "/profile/p5.jpg"
+                  imgUrl:  "/profile/p6/p6.jpg"
                 },
                 txt: "Wow!",
               }
@@ -220,13 +225,13 @@ function _createStories() {
                 _id: "u105",
                 fullname: "Kingsly Traylen",
                 username: "Kingsly123",
-                imgUrl: "/profile/p5.jpg"
+                imgUrl:  "/profile/p5/p5.jpg"
               },
               {
                 _id: "u106",
                 fullname: "Sabina Duxbury",
                 username: "Sabina_Dux28",
-                imgUrl: "/profile/p5.jpg"
+                imgUrl:  "/profile/p6/p6.jpg"
               }
             ],
             tags: ["fun", "romantic"]
@@ -248,7 +253,7 @@ function _createStories() {
                 _id: "u105",
                 fullname: "Kingsly Traylen",
                 username: "Kingsly123",
-                imgUrl: "/profile/p5.jpg"
+                imgUrl:  "/profile/p5/p5.jpg"
               },
               txt: "good one!",
             },
@@ -258,7 +263,7 @@ function _createStories() {
                 _id: "u106",
                 fullname: "Sabina Duxbury",
                 username: "Sabina_Dux28",
-                imgUrl: "/profile/p5.jpg"
+                imgUrl:  "/profile/p6/p6.jpg"
               },
               txt: "Wow!",
             }
@@ -268,13 +273,13 @@ function _createStories() {
               _id: "u105",
               fullname: "Kingsly Traylen",
               username: "Kingsly123",
-              imgUrl: "/profile/p5.jpg"
+              imgUrl: "/profile/p5/p5.jpg"
             },
             {
               _id: "u106",
               fullname: "Sabina Duxbury",
               username: "Sabina_Dux28",
-              imgUrl: "/profile/p5.jpg"
+              imgUrl:  "/profile/p6/p6.jpg"
             }
           ],
           tags: ["fun", "romantic"]

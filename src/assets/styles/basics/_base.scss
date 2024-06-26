@@ -40,4 +40,11 @@ a {
     text-decoration: none;
 }
 
-
+.material-symbols-outlined { 
+    font-variation-settings: 'FILL' 0, 'wght' 800, 'GRAD' 0, 'opsz' 58;
+    font-size: 26px;
+} 
+.material-symbols-outlined.fill{ 
+    font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48 ;
+    font-size: 26px
+} 

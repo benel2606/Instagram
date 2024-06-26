@@ -1,5 +1,5 @@
-import { reviewService } from '../services/review.service'
-import { store } from '../store/store'
+import { reviewService } from '../../services/review.service'
+import { store } from '../store'
 import { ADD_REVIEW, REMOVE_REVIEW, SET_REVIEWS } from './review.reducer'
 import { SET_SCORE } from './user.reducer'
 

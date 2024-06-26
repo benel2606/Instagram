@@ -6,7 +6,7 @@ export function StoryList({ stories }) {
       <ul>
         {stories.map((story) => (
           <li key={story._id}>
-            <StoryPreview story={story} time={story.timestamp} />
+            <StoryPreview story={story} />
           </li>
         ))}
       </ul>
