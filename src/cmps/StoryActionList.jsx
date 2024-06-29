@@ -6,7 +6,6 @@ import {
   FaRegBookmark,
   FaBookmark,
 } from "react-icons/fa"
-import { FcLike } from "react-icons/fc"
 import {
   loadStories,
   addStory,
@@ -14,6 +13,8 @@ import {
   removeStory,
   addStoryMsg,
 } from "../store/story.actions"
+import { storyService } from "../services/story.service.local"
+
 export function StoryActionList({ story }) {
   async function handleLike() {
     let likeByToSave = []
@@ -22,12 +23,7 @@ export function StoryActionList({ story }) {
       likeByToSave = story.likedBy.filter((user) => user._id != "u10")
     } else {
       likeByToSave = [...story.likedBy]
-      likeByToSave.push({
-        _id: "u10",
-        fullname: "benel Aharon",
-        username: "ben_aharon",
-        imgUrl: "/profile/p10/p10.jpg",
-      })
+      likeByToSave.push(storyService.getLoggedinUser())
     }
     const stroyToSave = { ...story, likedBy: likeByToSave }
     try {

@@ -36,12 +36,8 @@ export function LeftSideBar() {
         </NavLink>
 
         <NavLink className="sidebar-btn" to="">
-          <span
-            className={`material-symbols-outlined ${
-              isActive("/") ? "fill" : ""
-            }`}
-          >
-            search
+          <span className="sidbar-icon">
+            <GoSearch className="icons" />
           </span>
           <span className="sidbar-name">Search</span>
         </NavLink>
@@ -89,13 +85,6 @@ export function LeftSideBar() {
           <span className="sidbar-name">Profile</span>
         </NavLink>
       </nav>
-      {/* <a href="./explore">Explore</a>
-       <div onClick={() => onGoto("")}>Home</div>
-      <div onClick={() => onGoto("explore")}>Explore</div>
-      <div onClick={() => onGoto("inbox")}>Messages</div> 
-      <div to="notifications">Notifications</div>
-      <div to="create">Create</div>
-      <div to="profile">Profile</div> */}
     </header>
   )
 }

@@ -1,0 +1,32 @@
+.story-footer{
+    font-size:14px
+}
+.story-footer .likes-bar {
+    align-items: center;
+    display: flex;
+    gap: 5px;
+}
+.story-footer .likes-bar img {
+    border-radius: 50%;
+    height: 14px;
+    object-fit: cover;
+    width: 14px;
+}
+.story-footer .story-description  a{
+    color: $clr1;
+    font-weight: 600;
+}
+.story-footer .view-all{
+    color: $clr4-second-txt;
+}
+.story-footer .story-comments a{
+    color: $clr1;
+    font-weight: 600;
+}
+.story-preview .story-footer input {
+    border: none;
+    font-size: 14px;
+}
+.story-preview .story-footer input:focus {
+    outline: none;
+}

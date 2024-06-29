@@ -3,6 +3,7 @@
     display: flex;
     padding-left: 4px;
     justify-content: space-between;
+    font-size: 14px;
 }
 
 .name-preview img{
@@ -21,11 +22,11 @@
 }
 .name-preview a{
     cursor: pointer;
-    font-size: 14px;
     font-weight: 600;
-    padding: 0 5px;
+    // padding: 0 5px;
    
 }
 .name-preview span{
   color:$clr4-second-txt;
+  margin-inline-start: 3px;
 }

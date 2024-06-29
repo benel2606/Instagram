@@ -6,15 +6,27 @@ import { userService } from './user.service'
 const STORAGE_KEY = 'story'
 
 export const storyService = {
-    query,
-    getById,
-    save,
-    remove,
-    getEmptyStory,
-    addStoryMsg
+  getLoggedinUser,  
+  query,
+  getById,
+  save,
+  remove,
+  getEmptyStory,
+  addStoryMsg,
+  formatTime,
+  createComment
 }
 window.cs = storyService
 _createStories()
+
+function getLoggedinUser(){
+  return {
+    _id: "u10",
+    fullname: "benel Aharon",
+    username: "ben_aharon",
+    imgUrl: "/profile/p10/p10.jpg",
+  }
+}
 
 async function query(filterBy = {}) {
     var stories = await storageService.query(STORAGE_KEY)
@@ -95,6 +107,7 @@ function _createStories() {
         [{
             _id: "s101",
             txt: "Best trip ever",
+            timestamp:1719392425000,
             imgUrl: "/profile/p1/story/s3.jpg", 
             by: {
               _id: "u101",
@@ -143,6 +156,7 @@ function _createStories() {
           {
             _id: "s102",
             txt: "sport for life!",
+            timestamp:1687183225000,
             imgUrl: "/profile/p6/story/s1.jpg", 
             by: {
               _id: "u106",
@@ -191,6 +205,7 @@ function _createStories() {
           {
             _id: "s103",
             txt: "Best trip ever",
+            timestamp:1681924525000,
             imgUrl: "/profile/p2/story/s2.jpg", 
             by: {
               _id: "u102",
@@ -239,6 +254,7 @@ function _createStories() {
         ,{
           _id: "s104",
           txt: "Love",
+          timestamp:1679238025000,
           imgUrl: "/profile/p4/story/s1.jpg", 
           by: {
             _id: "u104",
@@ -288,5 +304,31 @@ function _createStories() {
         utilService.saveToStorage(STORAGE_KEY, stories)
     }
 
+function formatTime(timestamp) {
+      const currentTime = new Date();
+      const postTime = new Date(timestamp); // Convert timestamp to milliseconds
+  
+      const timeDifference = Math.floor((currentTime - postTime) / 1000); // Difference in seconds
+  
+      if (timeDifference < 60) {
+          return `${timeDifference} seconds ago`;
+      } else if (timeDifference < 3600) {
+          const minutes = Math.floor(timeDifference / 60);
+          return `${minutes} minutes ago`;
+      } else if (postTime.getDate() === currentTime.getDate()) {
+          return postTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      } else if (postTime.getDate() === currentTime.getDate() - 1) {
+          return 'Yesterday';
+      } else {
+          const options = { month: 'short', day: 'numeric' };
+          return postTime.toLocaleDateString('en-US' , options);
+      }
+  }
 
-
+function createComment(txt) {
+    return {
+      id: utilService.makeId(),
+      by: getLoggedinUser(),
+      txt
+    }
+  }
