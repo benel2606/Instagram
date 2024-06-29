@@ -1,0 +1,38 @@
+.suggestions{
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    gap: 15px;
+    width: 315px;
+    margin-block-start: 35px;
+    margin-inline-start: 74px;
+}
+
+.suggestions .suggestion-options {
+    display: flex;
+    padding: 4px 16px;
+    width: 351px;
+}
+.suggestions .suggestion-options span {
+    color: #b2b2b2;
+    font-weight: 600;
+}
+.suggestions .suggestion-options a {
+    color: #000;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 116px;
+}
+.suggestions .suggestion-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 8px 16px;
+}
+.suggestions .suggestion-footer span {
+    color: $gray3;
+    cursor: default;
+    font-size: 12px;
+    font-weight: 400;
+}

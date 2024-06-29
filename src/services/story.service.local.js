@@ -1,9 +1,10 @@
 
 import { storageService } from './async-storage.service'
 import { utilService } from './util.service'
-import { userService } from './user.service'
+// import { userService } from './user.service'
 
 const STORAGE_KEY = 'story'
+const SUGGESTION_KEY = 'suggestion'
 
 export const storyService = {
   getLoggedinUser,  
@@ -14,7 +15,8 @@ export const storyService = {
   getEmptyStory,
   addStoryMsg,
   formatTime,
-  createComment
+  createComment,
+  getSuggestions
 }
 window.cs = storyService
 _createStories()
@@ -69,7 +71,7 @@ async function save(story) {
         const storyToSave = {
             vendor : story.vendor,
             price : story.price,
-            owner: userService.getLoggedinUser(),
+            // owner: userService.getLoggedinUser(),
             msgs: []
         }
         savedStory = await storageService.post(STORAGE_KEY, storyToSave)
@@ -83,7 +85,7 @@ async function addStoryMsg(storyId, txt) {
 
     const msg = {
         id: utilService.makeId(),
-        by: userService.getLoggedinUser(),
+        // by: userService.getLoggedinUser(),
         txt
     }
     story.msgs.push(msg)
@@ -332,3 +334,26 @@ function createComment(txt) {
       txt
     }
   }
+
+function getSuggestions(){
+  const suggestions=
+  [{
+    _id: "u120",
+    fullname: "Marline McLane",
+    username: "Marline112",
+    imgUrl: "/suggestion/p20.jpg"
+  },
+  {
+    _id: "u121",
+    fullname: "Elana Shewring",
+    username: "Elanaaa",
+    imgUrl: "/suggestion/p21.jpg"
+  },
+  {
+    _id: "u122",
+    fullname: "Dirk Earles",
+    username: "Dir8787",
+    imgUrl: "/suggestion/p22.jpg"
+  },]
+  return suggestions
+}

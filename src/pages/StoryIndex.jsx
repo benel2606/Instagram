@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { StoryList } from "../cmps/Story/StoryList"
+import { Suggestions } from "../cmps/Story/Suggestions"
 import {
   loadStories,
   addStory,
@@ -19,6 +20,7 @@ export function StoryIndex() {
     <section className="story-index">
       <div className="container">
         <StoryList stories={stories} />
+        <Suggestions />
       </div>
       {/* <img src={`src/assets/img${stories[0].imgUrl}`} /> */}
     </section>

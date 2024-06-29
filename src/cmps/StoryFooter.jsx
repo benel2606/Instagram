@@ -52,14 +52,21 @@ export function StoryFooter({ story }) {
         <div className="view-all">
           View all {story.comments.length} comments
         </div>
-        {story.comments.map((comment) => (
-          <div key={comment.id}>
-            <a className="story-username" href={`/${comment.by.username}`}>
-              {comment.by.username}
-            </a>
-            <span className="story-text"> {comment.txt}</span>
-          </div>
-        ))}
+        {story.comments.length > 1
+          ? story.comments
+              .slice(story.comments.length - 1, story.comments.length)
+              .map((comment) => (
+                <div key={comment.id}>
+                  <a
+                    className="story-username"
+                    href={`/${comment.by.username}`}
+                  >
+                    {comment.by.username}
+                  </a>
+                  <span className="story-text"> {comment.txt}</span>
+                </div>
+              ))
+          : ""}
       </section>
       <form onSubmit={handleComment} action="#" className="comment-form">
         <input

@@ -1,0 +1,31 @@
+.suggestion-details  {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px;
+    width: 315px;
+}
+.suggestion-details .main-user-info {
+    align-items: center;
+    display: flex;
+    gap: 15px;
+}
+.suggestion-details .main-user-info .main-user-img {
+    border-radius: 50%;
+    height: 44px;
+    width: 44px;
+    // object-fit: cover;
+}
+.suggestion-details .main-user-username {
+    display: flex;
+    flex-direction: column;
+}
+.suggestion-details .main-user-username a {
+    font-weight: 600;
+}
+.suggestion-details .main-user-action {
+    color: $clr2;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+}
