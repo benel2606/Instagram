@@ -4,6 +4,44 @@
     display: flex;
     flex-direction: column;
 }
+.story-preview .name-preview{
+    align-items: center;
+    display: flex;
+    padding-left: 4px;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.story-preview .name-preview img{
+    border-radius: 50%;
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+    object-fit: cover;
+    margin-right: 12px;
+}
+.story-preview .name-preview .name-conatiner{
+    display: flex;
+    height: 56px;
+    // justify-content: space-between;
+    align-items: center;
+}
+
+.story-preview .name-preview a{
+    cursor: pointer;
+    font-weight: 600;
+    // padding: 0 5px; 
+}
+
+.story-preview .name-preview svg{
+    cursor: pointer;
+}
+
+.story-preview .name-preview span{
+  color:$clr4-second-txt;
+  margin-inline-start: 3px;
+}
+
 .story-preview .story-image{
     width: 480px;
     // height: 480px;

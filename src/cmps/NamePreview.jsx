@@ -3,7 +3,7 @@ import { storyService } from "../services/story.service.local"
 export function NamePreview({ by, time }) {
   return (
     <section className="name-preview">
-      <div className="conatiner">
+      <div className="name-conatiner">
         <img src={`img${by.imgUrl}`} />
         <a>{by.username}</a>
         <span>&bull;</span>

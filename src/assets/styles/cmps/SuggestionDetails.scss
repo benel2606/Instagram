@@ -16,9 +16,14 @@
     width: 44px;
     // object-fit: cover;
 }
-.suggestion-details .main-user-username {
+.suggestion-details .main-user-details {
     display: flex;
     flex-direction: column;
+    line-height: 16px
+}
+.suggestion-details .main-user-details span {
+    color: $clr4-second-txt;
+    font-size: 12px;
 }
 .suggestion-details .main-user-username a {
     font-weight: 600;

@@ -5,9 +5,11 @@ export function SuggestionDeails({ user, action }) {
     <header className="suggestion-details">
       <div className="main-user-info">
         <img className="main-user-img" src={`img${user.imgUrl}`} />
-        <div className="main-user-username">
+        <div className="main-user-details">
           <a>{user.username}</a>
-          <span>{user.fullname}</span>
+          <span>
+            {action == "Switch" ? user.fullname : "Suggested for you"}
+          </span>
         </div>
       </div>
       <a className="main-user-action">{action}</a>
