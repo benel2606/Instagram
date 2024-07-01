@@ -1,20 +1,32 @@
 import { useEffect, useState } from "react"
 import { storyService } from "../../services/story.service.local"
-import { SuggestionDeails } from "./SuggestionDetails"
+import { UserDetails } from "../UserDetails"
 export function Suggestions() {
   const loggedInUser = storyService.getLoggedinUser()
   const suggestions = storyService.getSuggestions()
 
   return (
     <header className="suggestions">
-      <SuggestionDeails user={loggedInUser} action={"Switch"} />
+      <UserDetails
+        user={loggedInUser}
+        underUser={loggedInUser.fullname}
+        action={"Switch"}
+        onClickAction={""}
+        comment={""}
+      />
       <div className="suggestion-options">
         <span>Suggestions For You</span>
         <a>See All</a>
       </div>
       {suggestions.map((suggestion) => (
         <span key={suggestion._id}>
-          <SuggestionDeails user={suggestion} action={"Follow"} />
+          <UserDetails
+            user={suggestion}
+            underUser={"Suggested for you"}
+            action={"Follow"}
+            onClickAction={""}
+            comment={""}
+          />
         </span>
       ))}
 

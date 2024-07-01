@@ -1,0 +1,75 @@
+.ant-modal .ant-modal-content {
+    padding: 0;
+    height: 70vh;
+}
+.story-modal{
+    display: flex;
+    width: 100%;
+}
+.story-modal img{
+    width: 30vw;
+    height: 70vh;
+    border-radius:8px 0 0 8px ;
+    
+}
+.story-modal .right-side{
+    // padding: 14px;
+    height: 70vh;
+    width: 34vw;
+}
+.story-modal .right-side header .user-name-preview{
+    padding: 14px 4px 14px 10px;
+    border-bottom: 1px solid $clr6-post-separator;
+    height: 70px;
+    width: 34vw;
+}
+
+.story-modal .right-side main{
+    padding: 14px 4px 14px 10px;
+    height: 50%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    border-bottom: 1px solid $clr6-post-separator;
+}
+.story-modal .right-side main .comment{
+    margin:  20px 0;
+}
+.story-modal .right-side main .story-description{
+    margin-block-end:  20px;
+}
+.story-modal .user-details .main-user-info .main-user-img {
+    width: 32px;
+    height: 32px;
+}
+.story-modal .right-side footer{
+    height: 15vh;
+    padding:6px 16px 8px ;
+    border-bottom: 1px solid $clr5;
+}
+.story-modal footer .likes-bar {
+    // height: 6vh;
+    align-items: center;
+    display: flex;
+    gap: 5px;
+}
+.story-modal footer .likes-bar img {
+    border-radius: 50%;
+    height: 14px;
+    object-fit: cover;
+    width: 14px;
+}
+.story-modal footer .likes-bar a{
+    color: $clr1;
+    font-weight: 600;
+}
+.story-modal .write-comment{
+    padding-left: 14px;
+}
+.story-modal .write-comment input {
+    border: none;
+    font-size: 14px;
+    width: 100%;
+}
+.story-modal .write-comment input:focus {
+    outline: none;
+}

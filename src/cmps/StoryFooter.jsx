@@ -1,4 +1,5 @@
 import { StoryActionList } from "./StoryActionList"
+import { StoryModal } from "./Story/StoryModal"
 import { storyService } from "../services/story.service.local"
 import { BsThreeDots } from "react-icons/bs"
 import {
@@ -8,22 +9,36 @@ import {
   removeStory,
   addStoryMsg,
 } from "../store/story.actions"
+import { Button, Modal } from "antd"
+import { useState } from "react"
+
 export function StoryFooter({ story }) {
   const lastUserLikedBy = story.likedBy.slice(-1)[0]
-  let inputTxt
+  // let inputTxt
+  const [inputTxt, setInputTxt] = useState("")
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  function showModal() {
+    setIsModalOpen(true)
+  }
+
+  function cancelModal() {
+    setIsModalOpen(false)
+  }
 
   function handleChange(ev) {
-    inputTxt = ev.target.value
+    setInputTxt(ev.target.value)
     console.log(inputTxt)
   }
 
   async function handleComment(ev) {
     ev.preventDefault()
     const commentsToSave = [...story.comments]
-    commentsToSave.push(storyService.createComment(ev.target.txt.value))
+    commentsToSave.push(storyService.createComment(inputTxt))
     const stroyToSave = { ...story, comments: commentsToSave }
     try {
       const savedStory = await updateStory(stroyToSave)
+      setInputTxt("")
     } catch (err) {
       console.log("Cannot update story" + err)
     }
@@ -41,6 +56,11 @@ export function StoryFooter({ story }) {
         >
           {lastUserLikedBy.username}
         </a>
+        and
+        <a story-user-name link>
+          {story.likedBy.length}
+        </a>
+        others
       </section>
       <section className="story-description">
         <a className="story-username" href={`/${story.by.username}`}>
@@ -49,7 +69,7 @@ export function StoryFooter({ story }) {
         <span className="story-text"> {story.txt}</span>
       </section>
       <section className="story-comments">
-        <div className="view-all">
+        <div className="view-all" onClick={showModal}>
           View all {story.comments.length} comments
         </div>
         {story.comments.length > 1
@@ -78,6 +98,7 @@ export function StoryFooter({ story }) {
           value={inputTxt}
         />
       </form>
+      <StoryModal story={story} open={isModalOpen} onCancel={cancelModal} />
     </footer>
   )
 }

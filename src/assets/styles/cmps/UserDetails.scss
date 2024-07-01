@@ -1,34 +1,40 @@
-.suggestion-details  {
+.user-details  {
     align-items: center;
     display: flex;
     justify-content: space-between;
     padding: 0 16px;
     width: 315px;
 }
-.suggestion-details .main-user-info {
+.user-details .main-user-info {
     align-items: center;
     display: flex;
     gap: 15px;
 }
-.suggestion-details .main-user-info .main-user-img {
+.user-details .main-user-info .main-user-img {
     border-radius: 50%;
     height: 44px;
     width: 44px;
     // object-fit: cover;
 }
-.suggestion-details .main-user-details {
+.user-details .main-user-details {
     display: flex;
     flex-direction: column;
     line-height: 16px
 }
-.suggestion-details .main-user-details span {
+.user-details .main-user-details .comment{
+    line-height: 16px;
+    padding-inline-start: 5px;
+    color: $clr1;
+}
+.user-details .main-user-details .under-user {
     color: $clr4-second-txt;
     font-size: 12px;
 }
-.suggestion-details .main-user-username a {
+.user-details a.username {
     font-weight: 600;
+    color: $clr1;
 }
-.suggestion-details .main-user-action {
+.user-details .main-user-action {
     color: $clr2;
     cursor: pointer;
     font-size: 12px;
