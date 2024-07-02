@@ -57,9 +57,7 @@ export function StoryFooter({ story }) {
           {lastUserLikedBy.username}
         </a>
         and
-        <a story-user-name link>
-          {story.likedBy.length}
-        </a>
+        <a className="story-user-name link">{story.likedBy.length}</a>
         others
       </section>
       <section className="story-description">

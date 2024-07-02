@@ -59,7 +59,7 @@ export function StoryModal({ story, open, onCancel }) {
             </div>
             {story.comments
               ? story.comments.map((comment) => (
-                  <div className="comment">
+                  <div key={comment.id} className="comment">
                     <UserDetails
                       user={comment.by}
                       underUser={"1h"}
