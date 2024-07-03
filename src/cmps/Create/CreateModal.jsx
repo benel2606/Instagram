@@ -12,6 +12,7 @@ import {
   addStoryMsg,
 } from "../../store/story.actions"
 import { useLocation } from "react-router-dom"
+import { UploadFile } from "./UploadFile"
 
 export function CreateModal({ setOpenCreateModal }) {
   const [isModalOpen, setIsModalOpen] = useState(true)
@@ -27,9 +28,14 @@ export function CreateModal({ setOpenCreateModal }) {
   return (
     <article className="create-modal">
       <Modal open={isModalOpen} onCancel={handleCancel} footer="">
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <div className="create-modal-content">
+          <span className="title">Create new post</span>
+          <span>
+            <img src="img/utils/media-upload.png" />
+            <div>Drag photos and videos here</div>
+            <UploadFile />
+          </span>
+        </div>
       </Modal>
     </article>
   )
