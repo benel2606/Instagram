@@ -16,7 +16,8 @@ export const storyService = {
   addStoryMsg,
   formatTime,
   createComment,
-  getSuggestions
+  getSuggestions,
+  getExplore
 }
 window.cs = storyService
 _createStories()
@@ -356,4 +357,57 @@ function getSuggestions(){
     imgUrl: "/suggestion/p22.jpg"
   },]
   return suggestions
+}
+function getExplore(){
+  const explore=
+  [{
+    _id: "p131",
+    imgUrl: "/explore/e1.jpg"
+  },
+  {
+    _id: "p132",
+    imgUrl: "/explore/e2.jpg"
+  },
+  {
+    _id: "p133",
+    imgUrl: "/explore/e3.jpg"
+  },
+  {
+    _id: "p134",
+    imgUrl: "/explore/e4.jpg"
+  },
+  {
+    _id: "p135",
+    imgUrl: "/explore/e5.jpg"
+  },
+  {
+    _id: "p136",
+    imgUrl: "/explore/e6.jpg"
+  },
+  {
+    _id: "p137",
+    imgUrl: "/explore/e7.jpg"
+  },
+  {
+    _id: "p138",
+    imgUrl: "/explore/e8.jpg"
+  },
+  {
+    _id: "p139",
+    imgUrl: "/explore/e9.jpg"
+  },
+  {
+    _id: "p140",
+    imgUrl: "/explore/e10.jpg"
+  },
+  {
+    _id: "p141",
+    imgUrl: "/explore/e11.jpg"
+  },
+  {
+    _id: "p142",
+    imgUrl: "/explore/e12.jpg"
+  },
+  ]
+  return explore
 }

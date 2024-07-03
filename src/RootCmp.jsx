@@ -4,6 +4,7 @@ import { LeftSideBar } from "./cmps/LeftSideBar.jsx"
 import { StoryIndex } from "./pages/StoryIndex.jsx"
 import { ExploreIndex } from "./pages/ExploreIndex.jsx"
 import { MessageIndex } from "./pages/MessageIndex.jsx"
+import { StoryModal } from "./cmps/Story/StoryModal.jsx"
 
 export function RootCmp() {
   return (
@@ -11,6 +12,9 @@ export function RootCmp() {
       <LeftSideBar />
       <Routes>
         <Route path="/" element={<StoryIndex />} />
+        {/* <Route path="/" element={<StoryIndex />}>
+          <Route path="/p/:storyId" element={<StoryModal />} />
+        </Route> */}
         <Route path="explore" element={<ExploreIndex />} />
         <Route path="inbox" element={<MessageIndex />} />
       </Routes>

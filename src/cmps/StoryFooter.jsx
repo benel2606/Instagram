@@ -11,6 +11,7 @@ import {
 } from "../store/story.actions"
 import { Button, Modal } from "antd"
 import { useState } from "react"
+import { Link, Outlet } from "react-router-dom"
 
 export function StoryFooter({ story }) {
   const lastUserLikedBy = story.likedBy.slice(-1)[0]
@@ -70,6 +71,9 @@ export function StoryFooter({ story }) {
         <div className="view-all" onClick={showModal}>
           View all {story.comments.length} comments
         </div>
+        {/* <Link to={`p/${story._id}`} className="view-all" onClick={showModal}>
+          View all {story.comments.length} comments
+        </Link> */}
         {story.comments.length > 1
           ? story.comments
               .slice(story.comments.length - 1, story.comments.length)
@@ -96,6 +100,7 @@ export function StoryFooter({ story }) {
           value={inputTxt}
         />
       </form>
+      {/* <Outlet open={true} onCancel={cancelModal} /> */}
       <StoryModal story={story} open={isModalOpen} onCancel={cancelModal} />
     </footer>
   )
