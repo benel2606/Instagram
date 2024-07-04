@@ -11,10 +11,10 @@ export function RootCmp() {
     <main className="root-app">
       <LeftSideBar />
       <Routes>
-        <Route path="/" element={<StoryIndex />} />
-        {/* <Route path="/" element={<StoryIndex />}>
+        {/* <Route path="/" element={<StoryIndex />} /> */}
+        <Route path="/" element={<StoryIndex />}>
           <Route path="/p/:storyId" element={<StoryModal />} />
-        </Route> */}
+        </Route>
         <Route path="explore" element={<ExploreIndex />} />
         <Route path="inbox" element={<MessageIndex />} />
       </Routes>

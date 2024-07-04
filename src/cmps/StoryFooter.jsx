@@ -68,12 +68,12 @@ export function StoryFooter({ story }) {
         <span className="story-text"> {story.txt}</span>
       </section>
       <section className="story-comments">
-        <div className="view-all" onClick={showModal}>
+        {/* <div className="view-all" onClick={showModal}>
+          View all {+story.comments.length} comments
+        </div> */}
+        <Link to={`p/${story._id}`} className="view-all" onClick={showModal}>
           View all {story.comments.length} comments
-        </div>
-        {/* <Link to={`p/${story._id}`} className="view-all" onClick={showModal}>
-          View all {story.comments.length} comments
-        </Link> */}
+        </Link>
         {story.comments.length > 1
           ? story.comments
               .slice(story.comments.length - 1, story.comments.length)
@@ -101,7 +101,7 @@ export function StoryFooter({ story }) {
         />
       </form>
       {/* <Outlet open={true} onCancel={cancelModal} /> */}
-      <StoryModal story={story} open={isModalOpen} onCancel={cancelModal} />
+      {/* <StoryModal story={story} open={isModalOpen} onCancel={cancelModal} /> */}
     </footer>
   )
 }
