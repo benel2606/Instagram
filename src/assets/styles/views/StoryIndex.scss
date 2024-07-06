@@ -7,14 +7,20 @@
     // margin: 2.76rem auto;
     // margin-left: 245px;
     // width: 100%;
-    margin-left: 244px;
+    // margin-left: 244px;
+    display: flex;
+    grid-template-columns: 57% 43%;
+    height: 100%;
+    justify-content: center;
+    margin: 2.76rem auto;
+    width: 100%;
 }
 .container{
     display: flex;
-        grid-template-columns: 57% 43%;
-        height: 100%;
-        justify-content: center;
-        margin: 2.76rem auto;
-        width: 100%;
+    grid-template-columns: 57% 43%;
+    height: 100%;
+    justify-content: center;
+    margin: 2.76rem auto;
+    width: 100%;
         
 }

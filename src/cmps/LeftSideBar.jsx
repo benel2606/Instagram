@@ -81,7 +81,7 @@ export function LeftSideBar() {
           </span>
           <span className="sidbar-name">Create</span>
         </div>
-        <NavLink className="sidebar-btn" to="">
+        <NavLink className="sidebar-btn" to="ben_aharon">
           <span className="sidbar-icon">
             <CgProfile className="icons" />
           </span>

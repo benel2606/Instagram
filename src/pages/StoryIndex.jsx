@@ -47,10 +47,10 @@ export function StoryIndex() {
   if (!stories || !stories.length) return <div>Loading...</div>
   return (
     <section className="story-index">
-      <div className="container">
-        <StoryList stories={stories} />
-        <Suggestions />
-      </div>
+      {/* <div className="container"> */}
+      <StoryList stories={stories} />
+      <Suggestions />
+      {/* </div> */}
       {story && (
         <StoryModal
           story={story}
