@@ -10,31 +10,40 @@ import {
   addStoryMsg,
   loadStory,
 } from "../store/story.actions"
-import { storyService } from "../services/story.service"
-import { useLocation } from "react-router-dom"
+import { storyService } from "../services/story.service.local"
+import { useLocation, useNavigate } from "react-router-dom"
 import { StoryModal } from "../cmps/Story/StoryModal"
 
 export function StoryIndex() {
   const stories = useSelector((storeState) => storeState.storyModule.stories)
+  //const story = useSelector((storeState) => storeState.storyModule.story)
+
   const [story, setStory] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(true)
   const location = useLocation()
+  const navigate = useNavigate()
   const storyId = location.pathname.split("/p/")[1]
-  console.log(storyId)
+  console.log("storyId", storyId)
   useEffect(() => {
     loadStories()
   }, [])
 
   useEffect(() => {
     if (storyId) {
+      //loadStory(storyId)
       getStoryById()
+      console.log("story-useEffect", story)
     }
   }, [storyId])
+  console.log("story", story)
   async function getStoryById() {
-    const storyToLoad = await loadStory(storyId)
+    const storyToLoad = await storyService.getById(storyId)
     setStory(storyToLoad)
-    console.log(storyToLoad)
   }
-  function cancelModal() {}
+  function cancelModal() {
+    setStory(null)
+    navigate("/")
+  }
   if (!stories || !stories.length) return <div>Loading...</div>
   return (
     <section className="story-index">
@@ -42,8 +51,14 @@ export function StoryIndex() {
         <StoryList stories={stories} />
         <Suggestions />
       </div>
-      {story && <StoryModal story={story} open={true} onCancel={cancelModal} />}
-      {/* <img src={`src/assets/img${stories[0].imgUrl}`} /> */}
+      {story && (
+        <StoryModal
+          story={story}
+          open={true}
+          onCancel={cancelModal}
+          setStory={setStory}
+        />
+      )}
     </section>
   )
 }

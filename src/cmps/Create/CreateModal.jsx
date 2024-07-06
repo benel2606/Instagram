@@ -13,6 +13,7 @@ import {
 } from "../../store/story.actions"
 import { useLocation } from "react-router-dom"
 import { UploadFile } from "./UploadFile"
+import { ImgUploader } from "../ImgUploader"
 
 export function CreateModal({ setOpenCreateModal }) {
   const [isModalOpen, setIsModalOpen] = useState(true)
@@ -33,7 +34,8 @@ export function CreateModal({ setOpenCreateModal }) {
           <span>
             <img src="img/utils/media-upload.png" />
             <div>Drag photos and videos here</div>
-            <UploadFile />
+            {/* <UploadFile /> */}
+            <ImgUploader />
           </span>
         </div>
       </Modal>

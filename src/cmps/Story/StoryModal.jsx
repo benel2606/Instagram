@@ -3,36 +3,15 @@ import { Modal } from "antd"
 import { UserDetails } from "../UserDetails"
 import { StoryActionList } from "../StoryActionList"
 import { storyService } from "../../services/story.service.local"
-import {
-  loadStories,
-  loadStory,
-  addStory,
-  updateStory,
-  removeStory,
-  addStoryMsg,
-} from "../../store/story.actions"
+import { updateStory } from "../../store/story.actions"
+import { useSelector } from "react-redux"
 import { useLocation } from "react-router-dom"
 
-export function StoryModal({ story, open, onCancel }) {
+export function StoryModal({ story, open, onCancel, setStory }) {
   // export function StoryModal({ open, onCancel }) {
   const [inputTxt, setInputTxt] = useState("")
   const lastUserLikedBy = story.likedBy.slice(-1)[0]
   const location = useLocation()
-
-  // const storyId = location.pathname.split("/p/")[1]
-  // let story = ""
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     story = await loadStory(storyId)
-  //     lastUserLikedBy = story.likedBy.slice(-1)[0]
-  //   }
-  //   fetchData()
-  // }, [])
-
-  //lastUserLikedBy = story.likedBy.slice(-1)[0]
-
-  //const lastUserLikedBy = story.likedBy.slice(-1)[0]
-
   function handleChange(ev) {
     setInputTxt(ev.target.value)
     console.log(inputTxt)
@@ -45,11 +24,11 @@ export function StoryModal({ story, open, onCancel }) {
     try {
       const savedStory = await updateStory(stroyToSave)
       setInputTxt("")
+      setStory(savedStory)
     } catch (err) {
       console.log("Cannot update story" + err)
     }
   }
-  // if (!story || !story.length) return <div>Loading...</div>
   return (
     <Modal width={"65%"} open={open} onCancel={onCancel} footer="">
       <article className="story-modal">
@@ -93,7 +72,7 @@ export function StoryModal({ story, open, onCancel }) {
               : ""}
           </main>
           <footer>
-            <StoryActionList story={story} />
+            <StoryActionList story={story} setStory={setStory} />
             <section className="likes-bar">
               <img src={`img${lastUserLikedBy.imgUrl}`} />
               <span>Liked by</span>

@@ -1,32 +1,13 @@
 import { StoryActionList } from "./StoryActionList"
 import { StoryModal } from "./Story/StoryModal"
 import { storyService } from "../services/story.service.local"
-import { BsThreeDots } from "react-icons/bs"
-import {
-  loadStories,
-  addStory,
-  updateStory,
-  removeStory,
-  addStoryMsg,
-} from "../store/story.actions"
-import { Button, Modal } from "antd"
+import { updateStory } from "../store/story.actions"
 import { useState } from "react"
 import { Link, Outlet } from "react-router-dom"
 
-export function StoryFooter({ story }) {
+export function StoryFooter({ story, setStory }) {
   const lastUserLikedBy = story.likedBy.slice(-1)[0]
-  // let inputTxt
   const [inputTxt, setInputTxt] = useState("")
-  const [isModalOpen, setIsModalOpen] = useState(false)
-
-  function showModal() {
-    setIsModalOpen(true)
-  }
-
-  function cancelModal() {
-    setIsModalOpen(false)
-  }
-
   function handleChange(ev) {
     setInputTxt(ev.target.value)
     console.log(inputTxt)
@@ -47,7 +28,7 @@ export function StoryFooter({ story }) {
 
   return (
     <footer className="story-footer">
-      <StoryActionList story={story} />
+      <StoryActionList story={story} setStory={setStory} />
       <section className="likes-bar">
         <img src={`img${lastUserLikedBy.imgUrl}`} />
         <span>Liked by</span>
@@ -68,10 +49,7 @@ export function StoryFooter({ story }) {
         <span className="story-text"> {story.txt}</span>
       </section>
       <section className="story-comments">
-        {/* <div className="view-all" onClick={showModal}>
-          View all {+story.comments.length} comments
-        </div> */}
-        <Link to={`p/${story._id}`} className="view-all" onClick={showModal}>
+        <Link to={`p/${story._id}`} className="view-all">
           View all {story.comments.length} comments
         </Link>
         {story.comments.length > 1

@@ -12,18 +12,16 @@
     object-fit: cover;
     width: 14px;
 }
-.story-footer .story-description  a{
-    color: $clr1;
-    font-weight: 600;
-}
-.story-footer .view-all{
+
+.story-footer a.view-all{
     color: $clr4-second-txt;
     cursor: pointer;
 }
-.story-footer .story-comments a{
+.story-footer .story-username{
     color: $clr1;
     font-weight: 600;
 }
+
 .story-preview .story-footer input {
     border: none;
     font-size: 14px;

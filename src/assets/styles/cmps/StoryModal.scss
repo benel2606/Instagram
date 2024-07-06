@@ -1,6 +1,9 @@
 .ant-modal .ant-modal-content {
     padding: 0;
+    padding-bottom: 0;
     height: 70vh;
+    overflow:auto;
+    scrollbar-width: none;
     //max-height: 550px;
     //max-height:440px
 }
@@ -23,7 +26,7 @@
     padding: 14px 4px 14px 10px;
     border-bottom: 1px solid $clr6-post-separator;
     height: 70px;
-    width: 34vw;
+    width: 33vw;
 }
 
 .story-modal .right-side main{
@@ -44,7 +47,7 @@
     height: 32px;
 }
 .story-modal .right-side footer{
-    height: 15vh;
+    // height: 15vh;
     padding:6px 16px 8px ;
     border-bottom: 1px solid $clr5;
 }
