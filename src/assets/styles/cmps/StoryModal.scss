@@ -21,17 +21,20 @@
     // padding: 14px;
     height: 70vh;
     width: 34vw;
+    display: flex; //new
+    flex-direction: column; //new
 }
 .story-modal .right-side header .user-name-preview{
     padding: 14px 4px 14px 10px;
     border-bottom: 1px solid $clr6-post-separator;
-    height: 70px;
+    //height: 70px;
     width: 33vw;
 }
 
 .story-modal .right-side main{
     padding: 14px 4px 14px 10px;
-    height: 50%;
+    // height: 50%; 
+    height: 60%; //new
     overflow-y: scroll;
     scrollbar-width: none;
     border-bottom: 1px solid $clr6-post-separator;

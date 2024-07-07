@@ -28,6 +28,10 @@ function getLoggedinUser(){
     fullname: "benel Aharon",
     username: "ben_aharon",
     imgUrl: "/profile/p10/p10.jpg",
+    bio: "love coding with React",
+    following: ['u101', 'u102', 'u103'],
+    followers: ['u101'],
+    savedStoryIds: [],
   }
 }
 
@@ -253,8 +257,8 @@ function _createStories() {
               }
             ],
             tags: ["fun", "romantic"]
-          }
-        ,{
+          },
+        {
           _id: "s104",
           txt: "Love",
           timestamp:1679238025000,
@@ -302,7 +306,204 @@ function _createStories() {
             }
           ],
           tags: ["fun", "romantic"]
-        }]
+        },
+        {
+          _id: "s105",
+          txt: "good vibes!",
+          timestamp:1719392425000,
+          imgUrl: "/profile/p10/story/s1.jpg", 
+          by: {
+            _id: "u10",
+            fullname: "benel Aharon",
+            username: "ben_aharon",
+            imgUrl: "/profile/p10/p10.jpg"
+          },
+          comments: [
+            {
+              id: "c101",
+              by: {
+                _id: "u105",
+                fullname: "Kingsly Traylen",
+                username: "Kingsly123",
+                imgUrl: "/profile/p5/p5.jpg"
+              },
+              txt: "good one!",
+            },
+            {
+              id: "c1002",
+              by: {
+                _id: "u106",
+                fullname: "Sabina Duxbury",
+                username: "Sabina_Dux28",
+                imgUrl:  "/profile/p6/p6.jpg"
+              },
+              txt: "Wow!",
+            }
+          ],
+          likedBy: [
+            {
+              _id: "u105",
+              fullname: "Kingsly Traylen",
+              username: "Kingsly123",
+              imgUrl:  "/profile/p5/p5.jpg"
+            },
+            {
+              _id: "u106",
+              fullname: "Sabina Duxbury",
+              username: "Sabina_Dux28",
+              imgUrl:  "/profile/p6/p6.jpg"
+            }
+          ],
+          tags: ["fun", "romantic"]
+        },
+        {
+          _id: "s106",
+          txt: "Best trip!",
+          timestamp:1719392425000,
+          imgUrl: "/profile/p10/story/s2.jpg", 
+          by: {
+            _id: "u10",
+            fullname: "benel Aharon",
+            username: "ben_aharon",
+            imgUrl: "/profile/p10/p10.jpg"
+          },
+          comments: [
+            {
+              id: "c101",
+              by: {
+                _id: "u105",
+                fullname: "Kingsly Traylen",
+                username: "Kingsly123",
+                imgUrl: "/profile/p5/p5.jpg"
+              },
+              txt: "Amazing!",
+            },
+            {
+              id: "c1002",
+              by: {
+                _id: "u106",
+                fullname: "Sabina Duxbury",
+                username: "Sabina_Dux28",
+                imgUrl:  "/profile/p6/p6.jpg"
+              },
+              txt: "Enjoy",
+            }
+          ],
+          likedBy: [
+            {
+              _id: "u105",
+              fullname: "Kingsly Traylen",
+              username: "Kingsly123",
+              imgUrl:  "/profile/p5/p5.jpg"
+            },
+            {
+              _id: "u106",
+              fullname: "Sabina Duxbury",
+              username: "Sabina_Dux28",
+              imgUrl:  "/profile/p6/p6.jpg"
+            }
+          ],
+          tags: ["view", "travel"]
+        },
+        {
+          _id: "s107",
+          txt: "Cook and love",
+          timestamp:1719392425000,
+          imgUrl: "/profile/p10/story/s3.jpg", 
+          by: {
+            _id: "u10",
+            fullname: "benel Aharon",
+            username: "ben_aharon",
+            imgUrl: "/profile/p10/p10.jpg"
+          },
+          comments: [
+            {
+              id: "c101",
+              by: {
+                _id: "u105",
+                fullname: "Kingsly Traylen",
+                username: "Kingsly123",
+                imgUrl: "/profile/p5/p5.jpg"
+              },
+              txt: "looks great!",
+            },
+            {
+              id: "c1002",
+              by: {
+                _id: "u106",
+                fullname: "Sabina Duxbury",
+                username: "Sabina_Dux28",
+                imgUrl:  "/profile/p6/p6.jpg"
+              },
+              txt: "wow",
+            }
+          ],
+          likedBy: [
+            {
+              _id: "u105",
+              fullname: "Kingsly Traylen",
+              username: "Kingsly123",
+              imgUrl:  "/profile/p5/p5.jpg"
+            },
+            {
+              _id: "u106",
+              fullname: "Sabina Duxbury",
+              username: "Sabina_Dux28",
+              imgUrl:  "/profile/p6/p6.jpg"
+            }
+          ],
+          tags: ["cook"]
+        },
+        {
+          _id: "s108",
+          txt: "vaction",
+          timestamp:1719392425000,
+          imgUrl: "/profile/p10/story/s4.jpg", 
+          by: {
+            _id: "u10",
+            fullname: "benel Aharon",
+            username: "ben_aharon",
+            imgUrl: "/profile/p10/p10.jpg"
+          },
+          comments: [
+            {
+              id: "c101",
+              by: {
+                _id: "u105",
+                fullname: "Kingsly Traylen",
+                username: "Kingsly123",
+                imgUrl: "/profile/p5/p5.jpg"
+              },
+              txt: "Amazing!",
+            },
+            {
+              id: "c1002",
+              by: {
+                _id: "u106",
+                fullname: "Sabina Duxbury",
+                username: "Sabina_Dux28",
+                imgUrl:  "/profile/p6/p6.jpg"
+              },
+              txt: "nice shots",
+            }
+          ],
+          likedBy: [
+            {
+              _id: "u105",
+              fullname: "Kingsly Traylen",
+              username: "Kingsly123",
+              imgUrl:  "/profile/p5/p5.jpg"
+            },
+            {
+              _id: "u106",
+              fullname: "Sabina Duxbury",
+              username: "Sabina_Dux28",
+              imgUrl:  "/profile/p6/p6.jpg"
+            }
+          ],
+          tags: ["view", "travel"]
+        },
+      ]
         }
         utilService.saveToStorage(STORAGE_KEY, stories)
     }

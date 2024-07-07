@@ -4,6 +4,7 @@ import { MdOutlineExplore, MdExplore } from "react-icons/md"
 import { RiMessengerLine, RiMessengerFill, RiAddBoxLine } from "react-icons/ri"
 import { IoMdHeartEmpty } from "react-icons/io"
 import { CgProfile } from "react-icons/cg"
+import { FaRegUserCircle, FaUserCircle } from "react-icons/fa"
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom"
 import { GoHomeFill } from "react-icons/go"
 import { useState } from "react"
@@ -83,7 +84,11 @@ export function LeftSideBar() {
         </div>
         <NavLink className="sidebar-btn" to="ben_aharon">
           <span className="sidbar-icon">
-            <CgProfile className="icons" />
+            {isActive("/ben_aharon") ? (
+              <FaUserCircle className="icons" />
+            ) : (
+              <FaRegUserCircle className="icons" />
+            )}
           </span>
           <span className="sidbar-name">Profile</span>
         </NavLink>

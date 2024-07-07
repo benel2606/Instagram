@@ -19,7 +19,6 @@ export function StoryIndex() {
   //const story = useSelector((storeState) => storeState.storyModule.story)
 
   const [story, setStory] = useState(null)
-  const [isModalOpen, setIsModalOpen] = useState(true)
   const location = useLocation()
   const navigate = useNavigate()
   const storyId = location.pathname.split("/p/")[1]
