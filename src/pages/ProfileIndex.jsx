@@ -7,7 +7,7 @@ import { useSelector } from "react-redux"
 import { loadStories } from "../store/story.actions"
 import { useLocation, useNavigate, useParams } from "react-router-dom"
 import { StoryModal } from "../cmps/Story/StoryModal"
-export function ProfileIndex() {
+export function ProfileIndex({ user = {} }) {
   const stories = useSelector((storeState) => storeState.storyModule.stories)
   const navigate = useNavigate()
   const params = useParams()

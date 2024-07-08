@@ -91,7 +91,7 @@ export function StoryModal({ storyId, open, onCancel }) {
               </a>
               and
               <a story-user-name link>
-                {story.likedBy.length}
+                {story.likedBy.length.toString()}
               </a>
               others
             </section>

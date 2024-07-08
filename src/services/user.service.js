@@ -1,5 +1,5 @@
 import { storageService } from './async-storage.service'
-import { httpService } from './http.service'
+import { httpService } from './old/http.service'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
@@ -84,9 +84,9 @@ function saveLocalUser(user) {
     return user
 }
 
-function getLoggedinUser() {
-    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
-}
+// function getLoggedinUser() {
+//     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+// }
 
 
 // ;(async ()=>{
@@ -96,4 +96,29 @@ function getLoggedinUser() {
 // })()
 
 
-
+function getLoggedinUser(){
+    return {
+      _id: "u10",
+      fullname: "benel Aharon",
+      username: "ben_aharon",
+      imgUrl: "/profile/p10/p10.jpg",
+      bio: "love coding with React",
+      following: ['u101', 'u102', 'u103'],
+      followers: ['u101'],
+      savedStoryIds: [],
+    }
+  }
+  let users = utilService.loadFromStorage(STORAGE_KEY)
+    if (!users || !users.length) {
+        users=
+        [{
+            _id: "u10",
+            fullname: "benel Aharon",
+            username: "ben_aharon",
+            imgUrl: "/profile/p10/p10.jpg",
+            bio: "love coding with React",
+            following: ['u101', 'u102', 'u103'],
+            followers: ['u101'],
+            savedStoryIds: [],
+        },
+    ]}
