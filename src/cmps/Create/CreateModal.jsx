@@ -17,6 +17,7 @@ import { ImgUploader } from "../ImgUploader"
 
 export function CreateModal({ setOpenCreateModal }) {
   const [isModalOpen, setIsModalOpen] = useState(true)
+  const [isImageUpload, setIsImageUpload] = useState(false)
 
   const showModal = () => {
     setIsModalOpen(true)
@@ -28,16 +29,22 @@ export function CreateModal({ setOpenCreateModal }) {
   }
   return (
     <article className="create-modal">
-      <Modal open={isModalOpen} onCancel={handleCancel} footer="">
-        <div className="create-modal-content">
-          <span className="title">Create new post</span>
-          <span>
-            <img src="img/utils/media-upload.png" />
-            <div>Drag photos and videos here</div>
-            {/* <UploadFile /> */}
-            <ImgUploader />
-          </span>
-        </div>
+      <Modal
+        open={isModalOpen}
+        onCancel={handleCancel}
+        footer=""
+        style={{ height: 20 }}
+      >
+        {!isImageUpload && (
+          <div className="create-modal-content">
+            <span className="title">Create new post</span>
+            <span>
+              <img src="img/utils/media-upload.png" />
+              <div>Drag photos and videos here</div>
+            </span>
+          </div>
+        )}
+        <ImgUploader setIsImageUpload={setIsImageUpload} />
       </Modal>
     </article>
   )

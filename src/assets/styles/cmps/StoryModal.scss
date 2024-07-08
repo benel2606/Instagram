@@ -2,8 +2,8 @@
     padding: 0;
     padding-bottom: 0;
     height: 70vh;
-    overflow:auto;
-    scrollbar-width: none;
+    //overflow:auto;
+    //scrollbar-width: none;
     //max-height: 550px;
     //max-height:440px
 }
@@ -23,6 +23,7 @@
     width: 34vw;
     display: flex; //new
     flex-direction: column; //new
+    justify-content: space-between;
 }
 .story-modal .right-side header .user-name-preview{
     padding: 14px 4px 14px 10px;

@@ -1,8 +1,7 @@
 import { useState } from "react"
 import { uploadService } from "../services/upload.service"
-import { Button } from "antd"
 
-export function ImgUploader({ onUploaded = null }) {
+export function ImgUploader({ onUploaded = null, setIsImageUpload }) {
   const [imgData, setImgData] = useState({
     imgUrl: null,
     height: 500,
@@ -22,7 +21,8 @@ export function ImgUploader({ onUploaded = null }) {
   function getUploadLabel() {
     if (imgData.imgUrl) {
       console.log(imgData.imgUrl)
-      return "Upload Another?"
+      setIsImageUpload(true)
+      return "next"
     }
     return isUploading ? "Uploading...." : "Select from computer"
   }
