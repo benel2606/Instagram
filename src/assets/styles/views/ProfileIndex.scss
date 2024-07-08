@@ -85,6 +85,7 @@
         display: flex;
         gap: 50px;
         justify-content: center;
+        text-transform: uppercase;
     }
     
     .profile-links .profile-pics-link {
@@ -119,6 +120,7 @@
     .profile-stories .story img {
         height: 308px;
         width: 308px;
+        cursor: pointer;
         // position: absolute;
     }
 }

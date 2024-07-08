@@ -5,13 +5,13 @@ import { PiIdentificationBadge } from "react-icons/pi"
 import { storyService } from "../services/story.service.local"
 import { useSelector } from "react-redux"
 import { loadStories } from "../store/story.actions"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate, useParams } from "react-router-dom"
 import { StoryModal } from "../cmps/Story/StoryModal"
 export function ProfileIndex() {
   const stories = useSelector((storeState) => storeState.storyModule.stories)
   const navigate = useNavigate()
+  const params = useParams()
   const [toggle, setToggle] = useState("posts")
-  const [openModal, setOpenModal] = useState(false)
   useEffect(() => {
     loadStories()
   }, [])
@@ -19,10 +19,18 @@ export function ProfileIndex() {
   const profileStories = stories.filter(
     (story) => story.by._id === loggedInUser._id
   )
+  function cancelModal() {
+    navigate(`/${loggedInUser.username}`)
+  }
   function onToggle(sw) {
     if (!loggedInUser) return
     setToggle(sw)
   }
+  const profileLinks = [
+    { id: "posts", icon: <MdGridOn /> },
+    { id: "saved", icon: <GoBookmark /> },
+    { id: "tagged", icon: <PiIdentificationBadge /> },
+  ]
   return (
     <div className="profile-index">
       <div className="profile-container">
@@ -59,63 +67,40 @@ export function ProfileIndex() {
           </aside>
         </header>
         <main>
+          {/* PROFILE LINKS */}
           <section className="profile-links">
-            <section
-              onClick={() => setToggle("posts")}
-              className={
-                toggle === "posts"
-                  ? "profile-pics-link active"
-                  : "profile-pics-link"
-              }
-            >
-              <a className="posts-icon">
-                <MdGridOn />
-              </a>
-              POSTS
-            </section>
-            <section
-              onClick={() => onToggle("saved")}
-              className={
-                toggle === "saved"
-                  ? "profile-pics-link active"
-                  : "profile-pics-link"
-              }
-            >
-              <a className="saved-icon">
-                <GoBookmark />
-              </a>
-              SAVED
-            </section>
-            <section
-              onClick={() => onToggle("tagged")}
-              className={
-                toggle === "tagged"
-                  ? "profile-pics-link active"
-                  : "profile-pics-link"
-              }
-            >
-              <a className="tagged-icon">
-                <PiIdentificationBadge />
-              </a>
-              TAGGED
-            </section>
+            {profileLinks.map(({ id, icon }) => (
+              <section
+                onClick={() => setToggle(id)}
+                className={`profile-pics-link ${toggle === id ? "active" : ""}`}
+              >
+                <a className={`${id}-icon`}>{icon}</a>
+                {id}
+              </section>
+            ))}
           </section>
-          {toggle === "posts" ? (
-            <section className="profile-stories">
-              {profileStories.map((story) => (
+          {/* PROFILE STORIES */}
+          <section className="profile-stories">
+            {toggle === "posts" &&
+              profileStories.map((story) => (
                 <div
                   key={story._id}
-                  onClick={() => navigate(`/p/${story._id}`)}
+                  onClick={() => navigate(`p/${story._id}`)}
                   className="story"
                 >
                   <img key={story.imgUrl} src={`img/${story.imgUrl}`} />
                 </div>
               ))}
-            </section>
-          ) : (
-            <section className="profile-stories"></section>
-          )}
+          </section>
         </main>
+        {params.storyId && (
+          <StoryModal
+            storyId={params.storyId} //new
+            open={true}
+            onCancel={cancelModal}
+            //setStory={setStory}
+          />
+        )}
       </div>
     </div>
   )

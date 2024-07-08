@@ -11,26 +11,26 @@ import {
   loadStory,
 } from "../store/story.actions"
 import { storyService } from "../services/story.service.local"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate, useParams } from "react-router-dom"
 import { StoryModal } from "../cmps/Story/StoryModal"
 
 export function StoryIndex() {
   const stories = useSelector((storeState) => storeState.storyModule.stories)
-  //const story = useSelector((storeState) => storeState.storyModule.story)
-
-  const [story, setStory] = useState(null)
+  const story = useSelector((storeState) => storeState.storyModule.story)
+  const params = useParams() //new
+  const storyId = params.storyId
+  //const [story, setStory] = useState(null)
   const location = useLocation()
   const navigate = useNavigate()
-  const storyId = location.pathname.split("/p/")[1]
-  console.log("storyId", storyId)
+
   useEffect(() => {
     loadStories()
   }, [])
 
   useEffect(() => {
     if (storyId) {
-      //loadStory(storyId)
-      getStoryById()
+      loadStory(storyId)
+      //getStoryById()
       console.log("story-useEffect", story)
     }
   }, [storyId])
@@ -40,22 +40,19 @@ export function StoryIndex() {
     setStory(storyToLoad)
   }
   function cancelModal() {
-    setStory(null)
     navigate("/")
   }
   if (!stories || !stories.length) return <div>Loading...</div>
   return (
     <section className="story-index">
-      {/* <div className="container"> */}
       <StoryList stories={stories} />
       <Suggestions />
-      {/* </div> */}
-      {story && (
+      {params.storyId && (
         <StoryModal
-          story={story}
+          storyId={storyId} //new
           open={true}
           onCancel={cancelModal}
-          setStory={setStory}
+          //setStory={setStory}
         />
       )}
     </section>

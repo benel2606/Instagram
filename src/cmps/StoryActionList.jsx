@@ -15,7 +15,7 @@ import {
 } from "../store/story.actions"
 import { storyService } from "../services/story.service.local"
 
-export function StoryActionList({ story, setStory }) {
+export function StoryActionList({ story }) {
   async function handleLike() {
     let likeByToSave = []
     const likedByMe = story.likedBy.some((user) => user._id == "u10")
@@ -28,7 +28,7 @@ export function StoryActionList({ story, setStory }) {
     const stroyToSave = { ...story, likedBy: likeByToSave }
     try {
       const savedStory = await updateStory(stroyToSave)
-      if (setStory) setStory(savedStory)
+      //if (setStory) setStory(savedStory)
     } catch (err) {
       console.log("Cannot update story" + err)
     }

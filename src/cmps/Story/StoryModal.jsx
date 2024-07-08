@@ -3,19 +3,22 @@ import { Modal } from "antd"
 import { UserDetails } from "../UserDetails"
 import { StoryActionList } from "../StoryActionList"
 import { storyService } from "../../services/story.service.local"
-import { updateStory } from "../../store/story.actions"
+import { updateStory, loadStory } from "../../store/story.actions"
 import { useSelector } from "react-redux"
 import { useLocation } from "react-router-dom"
 
-export function StoryModal({ story, open, onCancel, setStory }) {
-  // export function StoryModal({ open, onCancel }) {
+export function StoryModal({ storyId, open, onCancel }) {
+  const story = useSelector((storeState) => storeState.storyModule.story) //new
   const [inputTxt, setInputTxt] = useState("")
-  const lastUserLikedBy = story.likedBy.slice(-1)[0]
-  const location = useLocation()
+
+  useEffect(() => {
+    loadStory(storyId)
+  }, [])
+
   function handleChange(ev) {
     setInputTxt(ev.target.value)
-    console.log(inputTxt)
   }
+
   async function handleComment(ev) {
     ev.preventDefault()
     const commentsToSave = [...story.comments]
@@ -24,11 +27,14 @@ export function StoryModal({ story, open, onCancel, setStory }) {
     try {
       const savedStory = await updateStory(stroyToSave)
       setInputTxt("")
-      setStory(savedStory)
+      //setStory(savedStory)
     } catch (err) {
       console.log("Cannot update story" + err)
     }
   }
+
+  if (!story) return <div>Loading</div>
+  const lastUserLikedBy = story.likedBy.slice(-1)[0]
   return (
     <Modal width={"65%"} open={open} onCancel={onCancel} footer="">
       <article className="story-modal">
@@ -72,7 +78,8 @@ export function StoryModal({ story, open, onCancel, setStory }) {
               : ""}
           </main>
           <footer>
-            <StoryActionList story={story} setStory={setStory} />
+            {/* <StoryActionList story={story} setStory={setStory} /> new*/}
+            <StoryActionList story={story} />
             <section className="likes-bar">
               <img src={`img${lastUserLikedBy.imgUrl}`} />
               <span>Liked by</span>
