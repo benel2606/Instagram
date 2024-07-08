@@ -1,6 +1,6 @@
 import { storyService } from '../services/story.service.local'
 import { store } from '../store/store'
-import { ADD_STORY, REMOVE_STORY, SET_STORIES, SET_STORY, UPDATE_STORY, ADD_STORY_MSG } from './story.reducer'
+import { ADD_STORY, REMOVE_STORY, SET_STORIES, SET_STORY, UPDATE_STORY, ADD_STORY_MSG ,UPLOAD_STORY} from './story.reducer'
 
 export async function loadStories() {
     try {
@@ -23,7 +23,6 @@ export async function loadStory(storyId) {
         throw err
     }
 }
-
 
 export async function removeStory(storyId) {
     try {
@@ -71,6 +70,17 @@ export async function addStoryMsg(storyId, txt) {
     }
 }
 
+export async function uploadStory() {
+    try {
+        const story=null
+        console.log('Upload Story', story)
+        store.dispatch(getCmdUploadStory(story))
+    } catch (story) {
+        console.log('Cannot add upload story', err)
+        throw err
+    }
+}
+
 // Command Creators:
 function getCmdSetStories(stories) {
     return {
@@ -106,6 +116,12 @@ function getCmdAddStoryMsg(msg) {
     return {
         type: ADD_STORY_MSG,
         msg
+    }
+}
+function getCmdUploadStory(story) {
+    return {
+        type: UPLOAD_STORY,
+        story
     }
 }
 

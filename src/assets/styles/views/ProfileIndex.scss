@@ -74,13 +74,17 @@
         cursor: pointer;
     }
 }
-.profile-index header .profile-container .profile-details .profile-more-details{
-    span{
+.profile-index .profile-container header .profile-details .profile-more-details{
+    div{
+        font-size: 14px;
+    }
+    div.username{
         font-weight: 600;
+       
     }
 }
 .profile-index .profile-container main{
-    border-top: 1px solid #c4c4c4;
+    border-top: 1px solid $clr7;
     .profile-links {
         display: flex;
         gap: 50px;
@@ -90,7 +94,7 @@
     
     .profile-links .profile-pics-link {
         align-items: center;
-        color: #c4c4c4;
+        color: $clr7;
         cursor: pointer;
         display: flex;
         font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
@@ -103,8 +107,8 @@
         line-height: 18px;
     }
     .profile-links .active {
-        border-top: 1px solid #000;
-        color: #000;
+        border-top: 1px solid $clr1;
+        color: $clr1;
     }
     .profile-stories {
         display: grid;

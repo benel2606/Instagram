@@ -9,6 +9,7 @@ import {
   removeStory,
   addStoryMsg,
   loadStory,
+  uploadStory,
 } from "../store/story.actions"
 import { storyService } from "../services/story.service.local"
 import { useLocation, useNavigate, useParams } from "react-router-dom"
@@ -41,6 +42,7 @@ export function StoryIndex() {
   }
   function cancelModal() {
     navigate("/")
+    uploadStory()
   }
   if (!stories || !stories.length) return <div>Loading...</div>
   return (

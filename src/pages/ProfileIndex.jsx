@@ -3,24 +3,43 @@ import { MdGridOn } from "react-icons/md"
 import { GoBookmark } from "react-icons/go"
 import { PiIdentificationBadge } from "react-icons/pi"
 import { storyService } from "../services/story.service.local"
+import { userService } from "../services/user.service"
 import { useSelector } from "react-redux"
-import { loadStories } from "../store/story.actions"
+import { loadStories, uploadStory } from "../store/story.actions"
 import { useLocation, useNavigate, useParams } from "react-router-dom"
 import { StoryModal } from "../cmps/Story/StoryModal"
-export function ProfileIndex({ user = {} }) {
+import { loadUsers } from "../store/user.actions"
+
+export function ProfileIndex() {
   const stories = useSelector((storeState) => storeState.storyModule.stories)
+  const users = useSelector((storeState) => storeState.userModule.users)
   const navigate = useNavigate()
   const params = useParams()
   const [toggle, setToggle] = useState("posts")
+  const [loggedInUser, setLoggedInUser] = useState("")
+
   useEffect(() => {
     loadStories()
   }, [])
-  const loggedInUser = storyService.getLoggedinUser()
+
+  useEffect(() => {
+    getLoggedInUser()
+  }, [params.userId])
+
+  async function getLoggedInUser() {
+    const foundUser = await userService.getByUsername(params.userId)
+    setLoggedInUser(foundUser)
+  }
+
+  if (!loggedInUser) return <div>loading...</div>
+
   const profileStories = stories.filter(
     (story) => story.by._id === loggedInUser._id
   )
+
   function cancelModal() {
     navigate(`/${loggedInUser.username}`)
+    uploadStory()
   }
   function onToggle(sw) {
     if (!loggedInUser) return
@@ -62,7 +81,8 @@ export function ProfileIndex({ user = {} }) {
               </div>
             </section>
             <section className="profile-more-details">
-              <span>{loggedInUser.username}</span>
+              <div className="username">{loggedInUser.username}</div>
+              <div className="bio">{loggedInUser.bio}</div>
             </section>
           </aside>
         </header>
@@ -71,6 +91,7 @@ export function ProfileIndex({ user = {} }) {
           <section className="profile-links">
             {profileLinks.map(({ id, icon }) => (
               <section
+                key={id}
                 onClick={() => setToggle(id)}
                 className={`profile-pics-link ${toggle === id ? "active" : ""}`}
               >
@@ -98,6 +119,7 @@ export function ProfileIndex({ user = {} }) {
             storyId={params.storyId} //new
             open={true}
             onCancel={cancelModal}
+            footer=""
             //setStory={setStory}
           />
         )}

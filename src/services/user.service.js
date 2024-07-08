@@ -1,36 +1,46 @@
 import { storageService } from './async-storage.service'
+import { utilService } from './util.service'
 import { httpService } from './old/http.service'
 
-const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
-
 export const userService = {
+    getLoggedinUser,
     login,
     logout,
     signup,
-    getLoggedinUser,
     saveLocalUser,
     getUsers,
     getById,
     remove,
     update,
-    changeScore
+    changeScore,
+    getByUsername
 }
-
+const STORAGE_KEY_USER = 'user'
 window.userService = userService
+_createUsers()
 
 
-function getUsers() {
-    return storageService.query('user')
+async function getUsers() {
+    var users = await storageService.query(STORAGE_KEY_USER)
     // return httpService.get(`user`)
+    return users
 }
 
+function getById(userId) {
+    return storageService.get(STORAGE_KEY_USER, userId)
+}
 
-
-async function getById(userId) {
-    const user = await storageService.get('user', userId)
-    // const user = await httpService.get(`user/${userId}`)
+async function getByUsername(username) {
+    var users = await storageService.query(STORAGE_KEY_USER)
+    const user=users.find((user)=>user.username==username)
     return user
 }
+
+// async function getById(userId) {
+//     const user = await storageService.get('user', userId)
+//     // const user = await httpService.get(`user/${userId}`)
+//     return user
+// }
 
 function remove(userId) {
     return storageService.remove('user', userId)
@@ -95,7 +105,6 @@ function saveLocalUser(user) {
 //     await userService.signup({fullname: 'Muki G', username: 'muki', password:'123', score: 10000})
 // })()
 
-
 function getLoggedinUser(){
     return {
       _id: "u10",
@@ -108,7 +117,8 @@ function getLoggedinUser(){
       savedStoryIds: [],
     }
   }
-  let users = utilService.loadFromStorage(STORAGE_KEY)
+  function _createUsers(){
+  let users = utilService.loadFromStorage(STORAGE_KEY_USER)
     if (!users || !users.length) {
         users=
         [{
@@ -117,8 +127,60 @@ function getLoggedinUser(){
             username: "ben_aharon",
             imgUrl: "/profile/p10/p10.jpg",
             bio: "love coding with React",
-            following: ['u101', 'u102', 'u103'],
+            following: ['u101', 'u106', 'u103'],
             followers: ['u101'],
             savedStoryIds: [],
         },
+        {
+            _id: "u101",
+            fullname: "Maurizio Ghiraldi",
+            username: "Maurizio.Ghir1",
+            imgUrl: "/profile/p1/p1.jpg",
+            bio: "love is in the air",
+            following: ['u10', 'u102', 'u103'],
+            followers: ['u102'],
+            savedStoryIds: [],
+        },
+        {
+            _id: "u102",
+            fullname: "Lorry Tenby",
+            username: "Lorryyyy",
+            imgUrl: "/profile/p2/p2.jpg",
+            bio: "",
+            following: ['u10', 'u104', 'u105'],
+            followers: ['u102'],
+            savedStoryIds: [],
+        },
+        {
+            _id: "u104",
+            fullname: "Cort Guion",
+            username: "Cort258",
+            imgUrl: "/profile/p4/p4.jpg",
+            bio: "",
+            following: ['u101', 'u102', 'u105'],
+            followers: ['u102','u105'],
+            savedStoryIds: [],
+        },
+        {
+            _id: "u105",
+            fullname: "Kingsly Traylen",
+            username: "Kingsly123",
+            imgUrl:  "/profile/p5/p5.jpg",
+            bio: "",
+            following: ['u101', 'u102', 'u106'],
+            followers: ['u102','u105'],
+            savedStoryIds: [],
+        },
+        {
+            _id: "u106",
+            fullname: "Sabina Duxbury",
+            username: "Sabina_Dux28",
+            imgUrl: "/profile/p6/p6.jpg",
+            bio: "Your personal trainer",
+            following: ['u10', 'u102', 'u103'],
+            followers: ['u102','u103'],
+            savedStoryIds: [],
+        },
     ]}
+    utilService.saveToStorage(STORAGE_KEY_USER, users)
+  }

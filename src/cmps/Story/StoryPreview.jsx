@@ -8,6 +8,7 @@ import {
   removeStory,
   addStoryMsg,
 } from "../../store/story.actions"
+import { Link } from "react-router-dom"
 export function StoryPreview({ story }) {
   function deleteHandle(id) {
     removeStory(id)
@@ -18,7 +19,7 @@ export function StoryPreview({ story }) {
         <section className="name-preview">
           <div className="name-conatiner">
             <img src={`img${story.by.imgUrl}`} />
-            <a>{story.by.username}</a>
+            <Link to={story.by.username}>{story.by.username}</Link>
             <span>&bull;</span>
             <span>{storyService.formatTime(story.timestamp)}</span>
           </div>

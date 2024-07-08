@@ -4,6 +4,7 @@ export const REMOVE_STORY = 'REMOVE_STORY'
 export const ADD_STORY = 'ADD_STORY'
 export const UPDATE_STORY = 'UPDATE_STORY'
 export const ADD_STORY_MSG = 'ADD_STORY_MSG'
+export const UPLOAD_STORY = 'UPLOAD_STORY'
 
 const initialState = {
     stories: [],
@@ -34,6 +35,9 @@ export function storyReducer(state = initialState, action) {
             break
         case ADD_STORY_MSG:
             newState = { ...state, story: { ...state.story, msgs: [...state.story.msgs || [], action.msg] } }
+            break
+        case UPLOAD_STORY:
+            newState = { ...state, story: action.story }
             break
         default:
     }
