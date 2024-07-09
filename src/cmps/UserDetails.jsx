@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 // import { storyService } from "../../services/story.service.local"
 export function UserDetails({
   user,
@@ -35,7 +37,9 @@ export function UserDetails({
         <img className="main-user-img" src={`img${user.imgUrl}`} />
         <div className="main-user-details">
           <div>
-            <a className="username">{user.username}</a>
+            <Link to={`${user.username}`} className="username">
+              {user.username}
+            </Link>
             <span className="comment">{comment}</span>
           </div>
           <span className="under-user">{underUser}</span>

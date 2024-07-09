@@ -32,12 +32,12 @@ export function StoryFooter({ story, setStory }) {
       <section className="likes-bar">
         <img src={`img${lastUserLikedBy.imgUrl}`} />
         <span>Liked by</span>
-        <a
+        <Link
           className="story-user-name link"
-          href={`/${lastUserLikedBy.username}`}
+          to={`${lastUserLikedBy.username}`}
         >
           {lastUserLikedBy.username}
-        </a>
+        </Link>
         and
         <a className="story-user-name link">{story.likedBy.length}</a>
         others
@@ -57,12 +57,12 @@ export function StoryFooter({ story, setStory }) {
               .slice(story.comments.length - 1, story.comments.length)
               .map((comment) => (
                 <div key={comment.id}>
-                  <a
+                  <Link
                     className="story-username"
-                    href={`/${comment.by.username}`}
+                    to={`${comment.by.username}`}
                   >
                     {comment.by.username}
-                  </a>
+                  </Link>
                   <span className="story-text"> {comment.txt}</span>
                 </div>
               ))

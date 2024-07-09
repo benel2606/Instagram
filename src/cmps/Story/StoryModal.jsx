@@ -5,7 +5,7 @@ import { StoryActionList } from "../StoryActionList"
 import { storyService } from "../../services/story.service.local"
 import { updateStory, loadStory } from "../../store/story.actions"
 import { useSelector } from "react-redux"
-import { useLocation } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 export function StoryModal({ storyId, open, onCancel }) {
   const story = useSelector((storeState) => storeState.storyModule.story) //new
@@ -83,12 +83,12 @@ export function StoryModal({ storyId, open, onCancel }) {
             <section className="likes-bar">
               <img src={`img${lastUserLikedBy.imgUrl}`} />
               <span>Liked by</span>
-              <a
+              <Link
                 className="story-user-name link"
-                href={`/${lastUserLikedBy.username}`}
+                to={`${lastUserLikedBy.username}`}
               >
                 {lastUserLikedBy.username}
-              </a>
+              </Link>
               and
               <a story-user-name link>
                 {story.likedBy.length.toString()}
