@@ -1,0 +1,60 @@
+.create-deatils {
+    display: grid;
+    grid-template-columns: 65% 35%;
+    width: 100%;
+    // height: calc(100% - 42px);
+    .img-section {
+        padding: 10px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        img{
+            height: 50vh;
+            max-height: 50vh;
+            max-width: 70%;
+        }
+    }
+    .post-info {
+        border-left: 1px solid #dbdbdb;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .post-user-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 20px 16px;
+        }
+        section {
+            align-items: center;
+            display: flex;
+            gap: 15px;
+            img {
+                border-radius: 50%;
+                height: 28px;
+                object-fit: cover;
+                width: 28px;
+            }
+           span {
+                font-size: 14px;
+                font-weight: 600;
+            }
+        }
+        form {
+            height: 174px;
+        }
+        textarea {
+            border: none;
+            font-size: 16px;
+            height: 200px;
+            resize: none;
+            width: 95%;
+        }
+        div{
+            display: flex;
+            justify-content: center;
+        }
+    }
+   
+   
+}

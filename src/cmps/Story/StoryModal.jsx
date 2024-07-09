@@ -39,7 +39,7 @@ export function StoryModal({ storyId, open, onCancel }) {
     <Modal width={"65%"} open={open} onCancel={onCancel} footer="">
       <article className="story-modal">
         <aside className="Left-side">
-          <img src={`img${story.imgUrl}`} />
+          <img src={story.imgUrl} />
         </aside>
         <aside className="right-side">
           <header>
@@ -80,21 +80,27 @@ export function StoryModal({ storyId, open, onCancel }) {
           <footer>
             {/* <StoryActionList story={story} setStory={setStory} /> new*/}
             <StoryActionList story={story} />
-            <section className="likes-bar">
-              <img src={`img${lastUserLikedBy.imgUrl}`} />
-              <span>Liked by</span>
-              <Link
-                className="story-user-name link"
-                to={`${lastUserLikedBy.username}`}
-              >
-                {lastUserLikedBy.username}
-              </Link>
-              and
-              <a story-user-name link>
-                {story.likedBy.length.toString()}
-              </a>
-              others
-            </section>
+            {lastUserLikedBy && (
+              <section className="likes-bar">
+                <img src={lastUserLikedBy.imgUrl} />
+                <span>Liked by</span>
+                <Link
+                  className="story-user-name link"
+                  to={`${lastUserLikedBy.username}`}
+                >
+                  {lastUserLikedBy.username}
+                </Link>
+                {story.likedBy.length > 1 && (
+                  <span>
+                    and&ensp;
+                    <a className="story-user-name link">
+                      {story.likedBy.length.toString()}
+                    </a>
+                    &ensp;others
+                  </span>
+                )}
+              </section>
+            )}
           </footer>
           <section className="write-comment">
             <form onSubmit={handleComment} action="#" className="comment-form">

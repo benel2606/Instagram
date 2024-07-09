@@ -4,7 +4,7 @@ export function NamePreview({ by, time }) {
   return (
     <section className="name-preview">
       <div className="name-conatiner">
-        <img src={`img${by.imgUrl}`} />
+        <img src={by.imgUrl} />
         <a>{by.username}</a>
         <span>&bull;</span>
         <span>{storyService.formatTime(time)}</span>

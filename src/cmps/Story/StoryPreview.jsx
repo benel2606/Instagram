@@ -18,7 +18,7 @@ export function StoryPreview({ story }) {
       <header>
         <section className="name-preview">
           <div className="name-conatiner">
-            <img src={`img${story.by.imgUrl}`} />
+            <img src={story.by.imgUrl} />
             <Link to={story.by.username}>{story.by.username}</Link>
             <span>&bull;</span>
             <span>{storyService.formatTime(story.timestamp)}</span>
@@ -26,7 +26,7 @@ export function StoryPreview({ story }) {
           <BsThreeDots onClick={() => deleteHandle(story._id)} />
         </section>
       </header>
-      <img className="story-image" src={`img${story.imgUrl}`} />
+      <img className="story-image" src={story.imgUrl} />
       {/* <section>
         <StoryActionList story={story} />
       </section> */}

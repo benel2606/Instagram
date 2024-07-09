@@ -11,7 +11,7 @@ export function ExploreIndex() {
   return (
     <section className="explore-index">
       {explore.map((exploreItem, index) => (
-        <img key={exploreItem._id} src={`img/${exploreItem.imgUrl}`} />
+        <img key={exploreItem._id} src={exploreItem.imgUrl} />
       ))}
       {/* <h1>Explore Index</h1>
       <ExploreList /> */}

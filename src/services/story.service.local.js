@@ -27,7 +27,7 @@ function getLoggedinUser(){
     _id: "u10",
     fullname: "benel Aharon",
     username: "ben_aharon",
-    imgUrl: "/profile/p10/p10.jpg",
+    imgUrl: "img/profile/p10/p10.jpg",
     bio: "love coding with React",
     following: ['u101', 'u102', 'u103'],
     followers: ['u101'],
@@ -74,10 +74,12 @@ async function save(story) {
     } else {
         // Later, owner is set by the backend
         const storyToSave = {
-            vendor : story.vendor,
-            price : story.price,
-            // owner: userService.getLoggedinUser(),
-            msgs: []
+          txt : story.txt,
+          imgUrl: story.imgUrl, 
+          by: story.by,
+          comments: story.comments,
+          likedBy: story.likedBy,
+          tags: story.tags
         }
         savedStory = await storageService.post(STORAGE_KEY, storyToSave)
     }
@@ -100,10 +102,16 @@ async function addStoryMsg(storyId, txt) {
 }
 
 function getEmptyStory() {
+    const loggedinUser=getLoggedinUser()
+    const byUser={_id:loggedinUser._id,username:loggedinUser.username,fullname:loggedinUser.fullname,imgUrl:loggedinUser.imgUrl}
     return {
-        vendor: 'Susita-' + utilService.makeId(),
-        price: utilService.getRandomIntInclusive(1000, 9000),
-        msgs: []
+      //_id : utilService.makeId(),
+      txt :"",
+      imgUrl: "", 
+      by: byUser,
+      comments: [],
+      likedBy: [],
+      tags: []
     }
 }
 
@@ -115,12 +123,12 @@ function _createStories() {
             _id: "s101",
             txt: "Best trip ever",
             timestamp:1719392425000,
-            imgUrl: "/profile/p1/story/s3.jpg", 
+            imgUrl: "img/profile/p1/story/s3.jpg", 
             by: {
               _id: "u101",
               fullname: "Maurizio Ghiraldi",
               username: "Maurizio.Ghir1",
-              imgUrl: "/profile/p1/p1.jpg"
+              imgUrl: "img/profile/p1/p1.jpg"
             },
             comments: [
               {
@@ -129,7 +137,7 @@ function _createStories() {
                   _id: "u105",
                   fullname: "Kingsly Traylen",
                   username: "Kingsly123",
-                  imgUrl: "/profile/p5/p5.jpg"
+                  imgUrl: "img/profile/p5/p5.jpg"
                 },
                 txt: "good one!",
               },
@@ -139,7 +147,7 @@ function _createStories() {
                   _id: "u106",
                   fullname: "Sabina Duxbury",
                   username: "Sabina_Dux28",
-                  imgUrl:  "/profile/p6/p6.jpg"
+                  imgUrl: "img/profile/p6/p6.jpg"
                 },
                 txt: "Wow!",
               }
@@ -149,13 +157,13 @@ function _createStories() {
                 _id: "u105",
                 fullname: "Kingsly Traylen",
                 username: "Kingsly123",
-                imgUrl:  "/profile/p5/p5.jpg"
+                imgUrl: "img/profile/p5/p5.jpg"
               },
               {
                 _id: "u106",
                 fullname: "Sabina Duxbury",
                 username: "Sabina_Dux28",
-                imgUrl:  "/profile/p6/p6.jpg"
+                imgUrl: "img/profile/p6/p6.jpg"
               }
             ],
             tags: ["fun", "romantic"]
@@ -164,12 +172,12 @@ function _createStories() {
             _id: "s102",
             txt: "sport for life!",
             timestamp:1687183225000,
-            imgUrl: "/profile/p6/story/s1.jpg", 
+            imgUrl: "img/profile/p6/story/s1.jpg", 
             by: {
               _id: "u106",
               fullname: "Sabina Duxbury",
               username: "Sabina_Dux28",
-              imgUrl: "/profile/p6/p6.jpg"
+              imgUrl: "img/profile/p6/p6.jpg"
             },
             comments: [
               {
@@ -178,7 +186,7 @@ function _createStories() {
                   _id: "u105",
                   fullname: "Kingsly Traylen",
                   username: "Kingsly123",
-                  imgUrl:  "/profile/p5/p5.jpg"
+                  imgUrl: "img/profile/p5/p5.jpg"
                 },
                 txt: "good one!",
               },
@@ -188,7 +196,7 @@ function _createStories() {
                   _id: "u106",
                   fullname: "Maurizio Ghiraldi",
                   username: "Maurizio.Ghir1",
-                  imgUrl:  "/profile/p6/p6.jpg"
+                  imgUrl: "img/profile/p6/p6.jpg"
                 },
                 txt: "Wow!",
               }
@@ -198,13 +206,13 @@ function _createStories() {
                 _id: "u105",
                 fullname: "Kingsly Traylen",
                 username: "Kingsly123",
-                imgUrl:  "/profile/p5/p5.jpg"
+                imgUrl: "img/profile/p5/p5.jpg"
               },
               {
                 _id: "u106",
                 fullname: "Sabina Duxbury",
                 username: "Sabina_Dux28",
-                imgUrl:  "/profile/p6/p6.jpg"
+                imgUrl: "img/profile/p6/p6.jpg"
               }
             ],
             tags: ["sport", "romantic"]
@@ -213,12 +221,12 @@ function _createStories() {
             _id: "s103",
             txt: "Best trip ever",
             timestamp:1681924525000,
-            imgUrl: "/profile/p2/story/s2.jpg", 
+            imgUrl: "img/profile/p2/story/s2.jpg", 
             by: {
               _id: "u102",
               fullname: "Lorry Tenby",
               username: "Lorryyyy",
-              imgUrl: "/profile/p2/p2.jpg"
+              imgUrl: "img/profile/p2/p2.jpg"
             },
             comments: [
               {
@@ -227,7 +235,7 @@ function _createStories() {
                   _id: "u105",
                   fullname: "Kingsly Traylen",
                   username: "Kingsly123",
-                  imgUrl:  "/profile/p5/p5.jpg"
+                  imgUrl: "img/profile/p5/p5.jpg"
                 },
                 txt: "good one!",
               },
@@ -237,7 +245,7 @@ function _createStories() {
                   _id: "u106",
                   fullname: "Sabina Duxbury",
                   username: "Sabina_Dux28",
-                  imgUrl:  "/profile/p6/p6.jpg"
+                  imgUrl: "img/profile/p6/p6.jpg"
                 },
                 txt: "Wow!",
               }
@@ -247,13 +255,13 @@ function _createStories() {
                 _id: "u105",
                 fullname: "Kingsly Traylen",
                 username: "Kingsly123",
-                imgUrl:  "/profile/p5/p5.jpg"
+                imgUrl: "img/profile/p5/p5.jpg"
               },
               {
                 _id: "u106",
                 fullname: "Sabina Duxbury",
                 username: "Sabina_Dux28",
-                imgUrl:  "/profile/p6/p6.jpg"
+                imgUrl: "img/profile/p6/p6.jpg"
               }
             ],
             tags: ["fun", "romantic"]
@@ -262,12 +270,12 @@ function _createStories() {
           _id: "s104",
           txt: "Love",
           timestamp:1679238025000,
-          imgUrl: "/profile/p4/story/s1.jpg", 
+          imgUrl: "img/profile/p4/story/s1.jpg", 
           by: {
             _id: "u104",
             fullname: "Cort Guion",
             username: "Cort258",
-            imgUrl: "/profile/p4/p4.jpg"
+            imgUrl: "img/profile/p4/p4.jpg"
           },
           comments: [
             {
@@ -276,7 +284,7 @@ function _createStories() {
                 _id: "u105",
                 fullname: "Kingsly Traylen",
                 username: "Kingsly123",
-                imgUrl:  "/profile/p5/p5.jpg"
+                imgUrl: "img/profile/p5/p5.jpg"
               },
               txt: "good one!",
             },
@@ -286,7 +294,7 @@ function _createStories() {
                 _id: "u106",
                 fullname: "Sabina Duxbury",
                 username: "Sabina_Dux28",
-                imgUrl:  "/profile/p6/p6.jpg"
+                imgUrl: "img/profile/p6/p6.jpg"
               },
               txt: "Wow!",
             }
@@ -296,13 +304,13 @@ function _createStories() {
               _id: "u105",
               fullname: "Kingsly Traylen",
               username: "Kingsly123",
-              imgUrl: "/profile/p5/p5.jpg"
+              imgUrl: "img/profile/p5/p5.jpg"
             },
             {
               _id: "u106",
               fullname: "Sabina Duxbury",
               username: "Sabina_Dux28",
-              imgUrl:  "/profile/p6/p6.jpg"
+              imgUrl: "img/profile/p6/p6.jpg"
             }
           ],
           tags: ["fun", "romantic"]
@@ -311,12 +319,12 @@ function _createStories() {
           _id: "s105",
           txt: "good vibes!",
           timestamp:1719392425000,
-          imgUrl: "/profile/p10/story/s1.jpg", 
+          imgUrl: "img/profile/p10/story/s1.jpg", 
           by: {
             _id: "u10",
             fullname: "benel Aharon",
             username: "ben_aharon",
-            imgUrl: "/profile/p10/p10.jpg"
+            imgUrl: "img/profile/p10/p10.jpg"
           },
           comments: [
             {
@@ -325,7 +333,7 @@ function _createStories() {
                 _id: "u105",
                 fullname: "Kingsly Traylen",
                 username: "Kingsly123",
-                imgUrl: "/profile/p5/p5.jpg"
+                imgUrl: "img/profile/p5/p5.jpg"
               },
               txt: "good one!",
             },
@@ -335,7 +343,7 @@ function _createStories() {
                 _id: "u106",
                 fullname: "Sabina Duxbury",
                 username: "Sabina_Dux28",
-                imgUrl:  "/profile/p6/p6.jpg"
+                imgUrl: "img/profile/p6/p6.jpg"
               },
               txt: "Wow!",
             }
@@ -345,13 +353,13 @@ function _createStories() {
               _id: "u105",
               fullname: "Kingsly Traylen",
               username: "Kingsly123",
-              imgUrl:  "/profile/p5/p5.jpg"
+              imgUrl: "img/profile/p5/p5.jpg"
             },
             {
               _id: "u106",
               fullname: "Sabina Duxbury",
               username: "Sabina_Dux28",
-              imgUrl:  "/profile/p6/p6.jpg"
+              imgUrl: "img/profile/p6/p6.jpg"
             }
           ],
           tags: ["fun", "romantic"]
@@ -360,12 +368,12 @@ function _createStories() {
           _id: "s106",
           txt: "Best trip!",
           timestamp:1719392425000,
-          imgUrl: "/profile/p10/story/s2.jpg", 
+          imgUrl: "img/profile/p10/story/s2.jpg", 
           by: {
             _id: "u10",
             fullname: "benel Aharon",
             username: "ben_aharon",
-            imgUrl: "/profile/p10/p10.jpg"
+            imgUrl: "img/profile/p10/p10.jpg"
           },
           comments: [
             {
@@ -374,7 +382,7 @@ function _createStories() {
                 _id: "u105",
                 fullname: "Kingsly Traylen",
                 username: "Kingsly123",
-                imgUrl: "/profile/p5/p5.jpg"
+                imgUrl: "img/profile/p5/p5.jpg"
               },
               txt: "Amazing!",
             },
@@ -384,7 +392,7 @@ function _createStories() {
                 _id: "u106",
                 fullname: "Sabina Duxbury",
                 username: "Sabina_Dux28",
-                imgUrl:  "/profile/p6/p6.jpg"
+                imgUrl: "img/profile/p6/p6.jpg"
               },
               txt: "Enjoy",
             }
@@ -394,13 +402,13 @@ function _createStories() {
               _id: "u105",
               fullname: "Kingsly Traylen",
               username: "Kingsly123",
-              imgUrl:  "/profile/p5/p5.jpg"
+              imgUrl: "img/profile/p5/p5.jpg"
             },
             {
               _id: "u106",
               fullname: "Sabina Duxbury",
               username: "Sabina_Dux28",
-              imgUrl:  "/profile/p6/p6.jpg"
+              imgUrl: "img/profile/p6/p6.jpg"
             }
           ],
           tags: ["view", "travel"]
@@ -409,12 +417,12 @@ function _createStories() {
           _id: "s107",
           txt: "Cook and love",
           timestamp:1719392425000,
-          imgUrl: "/profile/p10/story/s3.jpg", 
+          imgUrl: "img/profile/p10/story/s3.jpg", 
           by: {
             _id: "u10",
             fullname: "benel Aharon",
             username: "ben_aharon",
-            imgUrl: "/profile/p10/p10.jpg"
+            imgUrl: "img/profile/p10/p10.jpg"
           },
           comments: [
             {
@@ -423,7 +431,7 @@ function _createStories() {
                 _id: "u105",
                 fullname: "Kingsly Traylen",
                 username: "Kingsly123",
-                imgUrl: "/profile/p5/p5.jpg"
+                imgUrl: "img/profile/p5/p5.jpg"
               },
               txt: "looks great!",
             },
@@ -433,7 +441,7 @@ function _createStories() {
                 _id: "u106",
                 fullname: "Sabina Duxbury",
                 username: "Sabina_Dux28",
-                imgUrl:  "/profile/p6/p6.jpg"
+                imgUrl: "img/profile/p6/p6.jpg"
               },
               txt: "wow",
             }
@@ -443,13 +451,13 @@ function _createStories() {
               _id: "u105",
               fullname: "Kingsly Traylen",
               username: "Kingsly123",
-              imgUrl:  "/profile/p5/p5.jpg"
+              imgUrl: "img/profile/p5/p5.jpg"
             },
             {
               _id: "u106",
               fullname: "Sabina Duxbury",
               username: "Sabina_Dux28",
-              imgUrl:  "/profile/p6/p6.jpg"
+              imgUrl: "img/profile/p6/p6.jpg"
             }
           ],
           tags: ["cook"]
@@ -458,12 +466,12 @@ function _createStories() {
           _id: "s108",
           txt: "vaction",
           timestamp:1719392425000,
-          imgUrl: "/profile/p10/story/s4.jpg", 
+          imgUrl: "img/profile/p10/story/s4.jpg", 
           by: {
             _id: "u10",
             fullname: "benel Aharon",
             username: "ben_aharon",
-            imgUrl: "/profile/p10/p10.jpg"
+            imgUrl: "img/profile/p10/p10.jpg"
           },
           comments: [
             {
@@ -472,7 +480,7 @@ function _createStories() {
                 _id: "u105",
                 fullname: "Kingsly Traylen",
                 username: "Kingsly123",
-                imgUrl: "/profile/p5/p5.jpg"
+                imgUrl: "img/profile/p5/p5.jpg"
               },
               txt: "Amazing!",
             },
@@ -482,7 +490,7 @@ function _createStories() {
                 _id: "u106",
                 fullname: "Sabina Duxbury",
                 username: "Sabina_Dux28",
-                imgUrl:  "/profile/p6/p6.jpg"
+                imgUrl: "img/profile/p6/p6.jpg"
               },
               txt: "nice shots",
             }
@@ -492,13 +500,13 @@ function _createStories() {
               _id: "u105",
               fullname: "Kingsly Traylen",
               username: "Kingsly123",
-              imgUrl:  "/profile/p5/p5.jpg"
+              imgUrl: "img/profile/p5/p5.jpg"
             },
             {
               _id: "u106",
               fullname: "Sabina Duxbury",
               username: "Sabina_Dux28",
-              imgUrl:  "/profile/p6/p6.jpg"
+              imgUrl: "img/profile/p6/p6.jpg"
             }
           ],
           tags: ["view", "travel"]
@@ -543,19 +551,19 @@ function getSuggestions(){
     _id: "u120",
     fullname: "Marline McLane",
     username: "Marline112",
-    imgUrl: "/suggestion/p20.jpg"
+    imgUrl: "img/suggestion/p20.jpg"
   },
   {
     _id: "u121",
     fullname: "Elana Shewring",
     username: "Elanaaa",
-    imgUrl: "/suggestion/p21.jpg"
+    imgUrl: "img/suggestion/p21.jpg"
   },
   {
     _id: "u122",
     fullname: "Dirk Earles",
     username: "Dir8787",
-    imgUrl: "/suggestion/p22.jpg"
+    imgUrl: "img/suggestion/p22.jpg"
   },]
   return suggestions
 }
@@ -563,51 +571,51 @@ function getExplore(){
   const explore=
   [{
     _id: "p131",
-    imgUrl: "/explore/e1.jpg"
+    imgUrl: "img/explore/e1.jpg"
   },
   {
     _id: "p132",
-    imgUrl: "/explore/e2.jpg"
+    imgUrl: "img/explore/e2.jpg"
   },
   {
     _id: "p133",
-    imgUrl: "/explore/e3.jpg"
+    imgUrl: "img/explore/e3.jpg"
   },
   {
     _id: "p134",
-    imgUrl: "/explore/e4.jpg"
+    imgUrl: "img/explore/e4.jpg"
   },
   {
     _id: "p135",
-    imgUrl: "/explore/e5.jpg"
+    imgUrl: "img/explore/e5.jpg"
   },
   {
     _id: "p136",
-    imgUrl: "/explore/e6.jpg"
+    imgUrl: "img/explore/e6.jpg"
   },
   {
     _id: "p137",
-    imgUrl: "/explore/e7.jpg"
+    imgUrl: "img/explore/e7.jpg"
   },
   {
     _id: "p138",
-    imgUrl: "/explore/e8.jpg"
+    imgUrl: "img/explore/e8.jpg"
   },
   {
     _id: "p139",
-    imgUrl: "/explore/e9.jpg"
+    imgUrl: "img/explore/e9.jpg"
   },
   {
     _id: "p140",
-    imgUrl: "/explore/e10.jpg"
+    imgUrl: "img/explore/e10.jpg"
   },
   {
     _id: "p141",
-    imgUrl: "/explore/e11.jpg"
+    imgUrl: "img/explore/e11.jpg"
   },
   {
     _id: "p142",
-    imgUrl: "/explore/e12.jpg"
+    imgUrl: "img/explore/e12.jpg"
   },
   ]
   return explore

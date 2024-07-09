@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { uploadService } from "../services/upload.service"
 
-export function ImgUploader({ onUploaded = null, setIsImageUpload }) {
+export function ImgUploader({ onUploaded = null, setIsImageUpload, setImage }) {
   const [imgData, setImgData] = useState({
     imgUrl: null,
     height: 500,
@@ -16,8 +16,11 @@ export function ImgUploader({ onUploaded = null, setIsImageUpload }) {
     setImgData({ imgUrl: secure_url, width, height })
     setIsUploading(false)
     onUploaded?.(secure_url)
+    setImage(secure_url)
   }
-
+  function addNewStory() {
+    console.log("addNewStory")
+  }
   function getUploadLabel() {
     if (imgData.imgUrl) {
       console.log(imgData.imgUrl)
@@ -32,10 +35,19 @@ export function ImgUploader({ onUploaded = null, setIsImageUpload }) {
       <label className="custom-file-upload" htmlFor="imgUpload">
         {getUploadLabel()}
       </label>
+      {/* {!imgData.imgUrl ? (
+        <input type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
+      ) : (
+        <input type="button" onClick={addNewStory} id="imgUpload" />
+      )} */}
       <input type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
-      {imgData.imgUrl && (
-        <img src={imgData.imgUrl} style={{ maxWidth: "100%" }} />
-      )}
+
+      {/* {imgData.imgUrl && (
+        <section className="add-story">
+          <img src={imgData.imgUrl} />
+          <section>aaa</section>
+        </section>
+      )} */}
     </div>
   )
 }

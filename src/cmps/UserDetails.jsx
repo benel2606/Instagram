@@ -34,7 +34,7 @@ export function UserDetails({
 
     <header className="user-details">
       <div className="main-user-info">
-        <img className="main-user-img" src={`img${user.imgUrl}`} />
+        <img className="main-user-img" src={user.imgUrl} />
         <div className="main-user-details">
           <div>
             <Link to={`${user.username}`} className="username">

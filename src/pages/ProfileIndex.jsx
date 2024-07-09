@@ -36,7 +36,7 @@ export function ProfileIndex() {
   const profileStories = stories.filter(
     (story) => story.by._id === loggedInUser._id
   )
-
+  console.log(profileStories)
   function cancelModal() {
     navigate(`/${loggedInUser.username}`)
     uploadStory()
@@ -55,7 +55,7 @@ export function ProfileIndex() {
       <div className="profile-container">
         <header>
           <aside className="profile-img">
-            <img src={`img${loggedInUser.imgUrl}`}></img>
+            <img src={loggedInUser.imgUrl}></img>
           </aside>
           <aside className="profile-details">
             <section className="profile-username">
@@ -109,7 +109,7 @@ export function ProfileIndex() {
                   onClick={() => navigate(`p/${story._id}`)}
                   className="story"
                 >
-                  <img key={story.imgUrl} src={`img/${story.imgUrl}`} />
+                  <img key={story.imgUrl} src={story.imgUrl} />
                 </div>
               ))}
           </section>
