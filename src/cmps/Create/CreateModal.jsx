@@ -34,7 +34,7 @@ export function CreateModal({ setOpenCreateModal }) {
       <Modal
         open={isModalOpen}
         onCancel={handleCancel}
-        footer=""
+        footer={null}
         width={image ? "50%" : "30%"}
       >
         <div className="create-modal-content">

@@ -7,6 +7,10 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    height: 70vh;
+    justify-content: start;
 }
 .create-modal-content .title{
     // margin-bottom: 50px;
@@ -15,6 +19,7 @@
     width: 100%;
     // text-align: center;
     padding: 20px;
+    position: sticky;
 }
 .create-modal-content span{
     display: flex;
