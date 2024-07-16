@@ -25,7 +25,7 @@ _createStories()
 function getLoggedinUser(){
   return {
     _id: "u10",
-    fullname: "benel Aharon",
+    fullname: "Benel Aharon",
     username: "ben_aharon",
     imgUrl: "img/profile/p10/p10.jpg",
     bio: "love coding with React",
@@ -37,6 +37,7 @@ function getLoggedinUser(){
 
 async function query(filterBy = {}) {
     var stories = await storageService.query(STORAGE_KEY)
+    stories=stories.sort((a,b)=>b.timestamp-a.timestamp)
     // if (filterBy.txt) {
     //     const regex = new RegExp(filterBy.txt, 'i')
     //     stories = stories.filter(story => regex.test(story.vendor) || regex.test(story.description))
@@ -68,7 +69,8 @@ async function save(story) {
             by: story.by,
             comments: story.comments,
             likedBy: story.likedBy,
-            tags: story.tags
+            tags: story.tags,
+            timestamp:story.timestamp
         }
         savedStory = await storageService.put(STORAGE_KEY, storyToSave)
     } else {
@@ -79,7 +81,8 @@ async function save(story) {
           by: story.by,
           comments: story.comments,
           likedBy: story.likedBy,
-          tags: story.tags
+          tags: story.tags,
+          timestamp:story.timestamp
         }
         savedStory = await storageService.post(STORAGE_KEY, storyToSave)
     }
@@ -111,7 +114,8 @@ function getEmptyStory() {
       by: byUser,
       comments: [],
       likedBy: [],
-      tags: []
+      tags: [],
+      timestamp:""
     }
 }
 
@@ -154,17 +158,17 @@ function _createStories() {
             ],
             likedBy: [
               {
+              _id: "u105",
+                  fullname: "Kingsly Traylen",
+                  username: "Kingsly123",
+                  imgUrl: "img/profile/p5/p5.jpg"
+              },
+              {
                 _id: "u105",
                 fullname: "Kingsly Traylen",
                 username: "Kingsly123",
                 imgUrl: "img/profile/p5/p5.jpg"
               },
-              {
-                _id: "u106",
-                fullname: "Sabina Duxbury",
-                username: "Sabina_Dux28",
-                imgUrl: "img/profile/p6/p6.jpg"
-              }
             ],
             tags: ["fun", "romantic"]
           },
@@ -198,7 +202,7 @@ function _createStories() {
                   username: "Maurizio.Ghir1",
                   imgUrl: "img/profile/p6/p6.jpg"
                 },
-                txt: "Wow!",
+                txt: "Looks great!",
               }
             ],
             likedBy: [
@@ -207,12 +211,6 @@ function _createStories() {
                 fullname: "Kingsly Traylen",
                 username: "Kingsly123",
                 imgUrl: "img/profile/p5/p5.jpg"
-              },
-              {
-                _id: "u106",
-                fullname: "Sabina Duxbury",
-                username: "Sabina_Dux28",
-                imgUrl: "img/profile/p6/p6.jpg"
               }
             ],
             tags: ["sport", "romantic"]
@@ -247,7 +245,7 @@ function _createStories() {
                   username: "Sabina_Dux28",
                   imgUrl: "img/profile/p6/p6.jpg"
                 },
-                txt: "Wow!",
+                txt: "Love you!",
               }
             ],
             likedBy: [
@@ -286,7 +284,7 @@ function _createStories() {
                 username: "Kingsly123",
                 imgUrl: "img/profile/p5/p5.jpg"
               },
-              txt: "good one!",
+              txt: "wow",
             },
             {
               id: "c1002",
@@ -296,7 +294,7 @@ function _createStories() {
                 username: "Sabina_Dux28",
                 imgUrl: "img/profile/p6/p6.jpg"
               },
-              txt: "Wow!",
+              txt: "good one!",
             }
           ],
           likedBy: [
@@ -307,10 +305,10 @@ function _createStories() {
               imgUrl: "img/profile/p5/p5.jpg"
             },
             {
-              _id: "u106",
-              fullname: "Sabina Duxbury",
-              username: "Sabina_Dux28",
-              imgUrl: "img/profile/p6/p6.jpg"
+              _id: "u102",
+              fullname: "Lorry Tenby",
+              username: "Lorryyyy",
+              imgUrl: "img/profile/p2/p2.jpg"
             }
           ],
           tags: ["fun", "romantic"]

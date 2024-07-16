@@ -1,6 +1,7 @@
 import { StoryFooter } from "../StoryFooter"
 import { BsThreeDots } from "react-icons/bs"
 import { storyService } from "../../services/story.service.local"
+import { Button, Dropdown, Space } from "antd"
 import {
   loadStories,
   addStory,
@@ -9,10 +10,18 @@ import {
   addStoryMsg,
 } from "../../store/story.actions"
 import { Link } from "react-router-dom"
+import { userService } from "../../services/user.service"
 export function StoryPreview({ story }) {
   function deleteHandle(id) {
     removeStory(id)
   }
+  var items = [
+    {
+      key: "1",
+      label: <a onClick={() => deleteHandle(story._id)}>Delete</a>,
+    },
+  ]
+  var loggedInUser = userService.getLoggedinUser()
   return (
     <header className="story-preview">
       <header>
@@ -23,7 +32,13 @@ export function StoryPreview({ story }) {
             <span>&bull;</span>
             <span>{storyService.formatTime(story.timestamp)}</span>
           </div>
-          <BsThreeDots onClick={() => deleteHandle(story._id)} />
+          {loggedInUser._id == story.by._id ? (
+            <Dropdown menu={{ items }} placement="bottomLeft" arrow>
+              <BsThreeDots />
+            </Dropdown>
+          ) : (
+            <BsThreeDots />
+          )}
         </section>
       </header>
       <img className="story-image" src={story.imgUrl} />

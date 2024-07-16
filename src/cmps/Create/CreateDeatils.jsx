@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Modal, Button } from "antd"
 import { UserDetails } from "../UserDetails"
 import { StoryActionList } from "../StoryActionList"
@@ -14,12 +14,14 @@ import {
 import { useLocation } from "react-router-dom"
 import { userService } from "../../services/user.service"
 
-export function CreateDetails({ image, handleCancel }) {
-  const [newStory, setNewStory] = useState(storyService.getEmptyStory())
+export function CreateDetails({ newStory, setNewStory, image, handleCancel }) {
+  //const [newStory, setNewStory] = useState(storyService.getEmptyStory())
   const [inputTxt, setInputTxt] = useState("")
-  function handleChange({ target }) {
-    console.log("here")
-    let { value, type, name: field } = target
+  const stateRef = useRef()
+  const loggedInUser = userService.getLoggedinUser()
+
+  function handleChange(e) {
+    let { value, type, name: field } = e.target
     setNewStory((prevStory) => ({
       ...prevStory,
       [field]: value,
@@ -27,11 +29,17 @@ export function CreateDetails({ image, handleCancel }) {
       timestamp: new Date().getTime(),
     }))
   }
-  const loggedInUser = userService.getLoggedinUser()
+
   function onSaveStory() {
-    console.log(newStory)
+    setNewStory((prevStory) => ({
+      ...prevStory,
+      imgUrl: image,
+      timestamp: new Date().getTime(),
+    }))
+    console.log("onSaveStory", newStory)
     addStory(newStory).then(() => {
       handleCancel()
+      loadStories()
     })
   }
   if (!image) return <div>Loading..</div>

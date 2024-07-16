@@ -19,16 +19,24 @@ import { CreateDetails } from "./CreateDeatils"
 export function CreateModal({ setOpenCreateModal }) {
   const [isModalOpen, setIsModalOpen] = useState(true)
   const [isImageUpload, setIsImageUpload] = useState(false)
+  const [newStory, setNewStory] = useState(storyService.getEmptyStory())
   const [image, setImage] = useState("")
   console.log(image)
   const showModal = () => {
     setIsModalOpen(true)
   }
-
   const handleCancel = () => {
     setIsModalOpen(false)
     setOpenCreateModal(false)
   }
+  useEffect(() => {
+    setNewStory((prevStory) => ({
+      ...prevStory,
+      imgUrl: image,
+      timestamp: new Date().getTime(),
+    }))
+  }, [isImageUpload])
+
   return (
     <article className="create-modal">
       <Modal
@@ -51,7 +59,12 @@ export function CreateModal({ setOpenCreateModal }) {
               />
             </div>
           ) : (
-            <CreateDetails image={image} handleCancel={handleCancel} />
+            <CreateDetails
+              newStory={newStory}
+              setNewStory={setNewStory}
+              image={image}
+              handleCancel={handleCancel}
+            />
           )}
         </div>
       </Modal>

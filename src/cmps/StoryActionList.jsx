@@ -14,8 +14,9 @@ import {
   addStoryMsg,
 } from "../store/story.actions"
 import { storyService } from "../services/story.service.local"
-
+import { useNavigate } from "react-router"
 export function StoryActionList({ story }) {
+  const navigate = useNavigate()
   async function handleLike() {
     let likeByToSave = []
     const likedByMe = story.likedBy.some((user) => user._id == "u10")
@@ -43,7 +44,7 @@ export function StoryActionList({ story }) {
         ) : (
           <FaRegHeart onClick={handleLike} />
         )}
-        <FaRegComment />
+        <FaRegComment onClick={() => navigate(`/p/${story._id}`)} />
         <FiSend />
       </aside>
       <aside className="right-list">

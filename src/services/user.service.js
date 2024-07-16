@@ -108,7 +108,7 @@ function saveLocalUser(user) {
 function getLoggedinUser(){
     return {
       _id: "u10",
-      fullname: "benel Aharon",
+      fullname: "Benel Aharon",
       username: "ben_aharon",
       imgUrl: "img/profile/p10/p10.jpg",
       bio: "love coding with React",
@@ -123,7 +123,7 @@ function getLoggedinUser(){
         users=
         [{
             _id: "u10",
-            fullname: "benel Aharon",
+            fullname: "Benel Aharon",
             username: "ben_aharon",
             imgUrl: "img/profile/p10/p10.jpg",
             bio: "love coding with React",
@@ -165,7 +165,7 @@ function getLoggedinUser(){
             _id: "u105",
             fullname: "Kingsly Traylen",
             username: "Kingsly123",
-            imgUrl:  "/profile/p5/p5.jpg",
+            imgUrl:  "img/profile/p5/p5.jpg",
             bio: "",
             following: ['u101', 'u102', 'u106'],
             followers: ['u102','u105'],

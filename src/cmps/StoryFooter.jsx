@@ -51,9 +51,9 @@ export function StoryFooter({ story, setStory }) {
         </section>
       )}
       <section className="story-description">
-        <a className="story-username" href={`/${story.by.username}`}>
+        <Link className="story-username" to={`${story.by.username}`}>
           {story.by.username}
-        </a>
+        </Link>
         <span className="story-text"> {story.txt}</span>
       </section>
       {lastUserLikedBy && (
