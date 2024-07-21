@@ -86,7 +86,7 @@ export function StoryModal({ storyId, open, onCancel }) {
                 <span>Liked by</span>
                 <Link
                   className="story-user-name link"
-                  to={`${lastUserLikedBy.username}`}
+                  to={`/${lastUserLikedBy.username}`}
                 >
                   {lastUserLikedBy.username}
                 </Link>

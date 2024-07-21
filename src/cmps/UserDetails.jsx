@@ -37,7 +37,7 @@ export function UserDetails({
         <img className="main-user-img" src={user.imgUrl} />
         <div className="main-user-details">
           <div>
-            <Link to={`${user.username}`} className="username">
+            <Link to={`/${user.username}`} className="username">
               {user.username}
             </Link>
             <span className="comment">{comment}</span>

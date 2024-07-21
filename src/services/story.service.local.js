@@ -127,7 +127,7 @@ function _createStories() {
             _id: "s101",
             txt: "Best trip ever",
             timestamp:1719392425000,
-            imgUrl: "img/profile/p1/story/s3.jpg", 
+            imgUrl: "img/profile/p1/story/s2.jpg", 
             by: {
               _id: "u101",
               fullname: "Maurizio Ghiraldi",
@@ -509,6 +509,191 @@ function _createStories() {
           ],
           tags: ["view", "travel"]
         },
+        {
+          _id: "s131",
+          txt: "In Love!",
+          timestamp:1687183225000,
+          imgUrl: "img/profile/p4/story/s2.jpg", 
+          by: {
+            _id: "u104",
+            fullname: "Cort Guion",
+            username: "Cort258",
+            imgUrl: "img/profile/p4/p4.jpg"
+          },
+          comments: [
+            {
+              id: "c101",
+              by: {
+                _id: "u105",
+                fullname: "Kingsly Traylen",
+                username: "Kingsly123",
+                imgUrl: "img/profile/p5/p5.jpg"
+              },
+              txt: "good one!",
+            },
+            {
+              id: "c1002",
+              by: {
+                _id: "u106",
+                fullname: "Maurizio Ghiraldi",
+                username: "Maurizio.Ghir1",
+                imgUrl: "img/profile/p6/p6.jpg"
+              },
+              txt: "Looks great!",
+            }
+          ],
+          likedBy: [
+            {
+              _id: "u105",
+              fullname: "Kingsly Traylen",
+              username: "Kingsly123",
+              imgUrl: "img/profile/p5/p5.jpg"
+            }
+          ],
+          tags: ["romantic"]
+        },
+        {
+          _id: "s132",
+          txt: "Italy",
+          timestamp:1687183225000,
+          imgUrl: "img/profile/p7/story/s2.jpg", 
+          by: {
+            _id: "u107",
+            fullname: "Elan Shewring",
+            username: "Elanaaa",
+            imgUrl: "img/profile/p7/p7.jpg"
+          },
+          comments: [
+            {
+              id: "c101",
+              by: {
+                _id: "u105",
+                fullname: "Kingsly Traylen",
+                username: "Kingsly123",
+                imgUrl: "img/profile/p5/p5.jpg"
+              },
+              txt: "good one!",
+            },
+            {
+              id: "c1002",
+              by: {
+                _id: "u106",
+                fullname: "Maurizio Ghiraldi",
+                username: "Maurizio.Ghir1",
+                imgUrl: "img/profile/p6/p6.jpg"
+              },
+              txt: "Looks great!",
+            }
+          ],
+          likedBy: [
+            {
+              _id: "u106",
+                fullname: "Maurizio Ghiraldi",
+                username: "Maurizio.Ghir1",
+                imgUrl: "img/profile/p6/p6.jpg"
+            }
+          ],
+          tags: ["vaction"]
+        },
+        {
+          _id: "s133",
+          txt: "H13",
+          timestamp:1687183225000,
+          imgUrl: "img/profile/p8/story/s2.jpg", 
+          by: {
+            _id: "u108",
+            fullname: "Maria lavine",
+            username: "maria78",
+            imgUrl: "img/profile/p8/p8.jpg"
+          },
+          comments: [
+            {
+              id: "c101",
+              by: {
+                _id: "u106",
+                fullname: "Sabina Duxbury",
+                username: "Sabina_Dux28",
+                imgUrl: "img/profile/p6/p6.jpg"
+              },
+              txt: "Cool!",
+            },
+            {
+              id: "c1002",
+              by: {
+                _id: "u106",
+                fullname: "Maurizio Ghiraldi",
+                username: "Maurizio.Ghir1",
+                imgUrl: "img/profile/p6/p6.jpg"
+              },
+              txt: "Nice",
+            }
+          ],
+          likedBy: [
+            {
+              _id: "u106",
+              fullname: "Maurizio Ghiraldi",
+              username: "Maurizio.Ghir1",
+              imgUrl: "img/profile/p6/p6.jpg"
+            },
+            {
+              _id: "u106",
+              fullname: "Sabina Duxbury",
+              username: "Sabina_Dux28",
+              imgUrl: "img/profile/p6/p6.jpg"
+            }
+          ],
+          tags: []
+        },
+        {
+          _id: "s134",
+          txt: "Bridge",
+          timestamp:1687183225000,
+          imgUrl: "img/profile/p3/story/s3.jpg", 
+          by: {
+            _id: "u103",
+            fullname: "Dirk Earles",
+            username: "Dir8787",
+            imgUrl: "img/profile/p3/p3.jpg"
+          
+          },
+          comments: [
+            {
+              id: "c101",
+              by: {
+                _id: "u108",
+                fullname: "Maria lavine",
+                username: "maria78",
+                imgUrl: "img/profile/p8/p8.jpg"
+              },
+              txt: "LOL!",
+            },
+            {
+              id: "c1002",
+              by: {
+                _id: "u106",
+                fullname: "Maurizio Ghiraldi",
+                username: "Maurizio.Ghir1",
+                imgUrl: "img/profile/p6/p6.jpg"
+              },
+              txt: "amazing",
+            }
+          ],
+          likedBy: [
+            {
+              _id: "u106",
+              fullname: "Maurizio Ghiraldi",
+              username: "Maurizio.Ghir1",
+              imgUrl: "img/profile/p6/p6.jpg"
+            },
+            {
+              _id: "u106",
+              fullname: "Sabina Duxbury",
+              username: "Sabina_Dux28",
+              imgUrl: "img/profile/p6/p6.jpg"
+            }
+          ],
+          tags: []
+        },
       ]
         }
         utilService.saveToStorage(STORAGE_KEY, stories)
@@ -542,31 +727,217 @@ function createComment(txt) {
       txt
     }
   }
-
 function getSuggestions(){
   const suggestions=
   [{
-    _id: "u120",
-    fullname: "Marline McLane",
-    username: "Marline112",
-    imgUrl: "img/suggestion/p20.jpg"
+    _id: "u108",
+    fullname: "Maria lavine",
+    username: "maria78",
+    imgUrl: "img/profile/p8/p8.jpg"
   },
   {
-    _id: "u121",
-    fullname: "Elana Shewring",
+    _id: "u107",
+    fullname: "Elan Shewring",
     username: "Elanaaa",
-    imgUrl: "img/suggestion/p21.jpg"
+    imgUrl: "img/profile/p7/p7.jpg"
   },
   {
-    _id: "u122",
+    _id: "u103",
     fullname: "Dirk Earles",
     username: "Dir8787",
-    imgUrl: "img/suggestion/p22.jpg"
+    imgUrl: "img/profile/p3/p3.jpg"
   },]
   return suggestions
 }
 function getExplore(){
   const explore=
+  [{
+    _id: "s131",
+    txt: "In Love!",
+    timestamp:1687183225000,
+    imgUrl: "img/profile/p4/story/s2.jpg", 
+    by: {
+      _id: "u104",
+      fullname: "Cort Guion",
+      username: "Cort258",
+      imgUrl: "img/profile/p4/p4.jpg"
+    },
+    comments: [
+      {
+        id: "c101",
+        by: {
+          _id: "u105",
+          fullname: "Kingsly Traylen",
+          username: "Kingsly123",
+          imgUrl: "img/profile/p5/p5.jpg"
+        },
+        txt: "good one!",
+      },
+      {
+        id: "c1002",
+        by: {
+          _id: "u106",
+          fullname: "Maurizio Ghiraldi",
+          username: "Maurizio.Ghir1",
+          imgUrl: "img/profile/p6/p6.jpg"
+        },
+        txt: "Looks great!",
+      }
+    ],
+    likedBy: [
+      {
+        _id: "u105",
+        fullname: "Kingsly Traylen",
+        username: "Kingsly123",
+        imgUrl: "img/profile/p5/p5.jpg"
+      }
+    ],
+    tags: ["romantic"]
+  },
+  {
+    _id: "s132",
+    txt: "Italy",
+    timestamp:1687183225000,
+    imgUrl: "img/profile/p5/story/s2.jpg", 
+    by: {
+      _id: "u105",
+      fullname: "Kingsly Traylen",
+      username: "Kingsly123",
+      imgUrl: "img/profile/p5/p5.jpg"
+    },
+    comments: [
+      {
+        id: "c101",
+        by: {
+          _id: "u105",
+          fullname: "Kingsly Traylen",
+          username: "Kingsly123",
+          imgUrl: "img/profile/p5/p5.jpg"
+        },
+        txt: "good one!",
+      },
+      {
+        id: "c1002",
+        by: {
+          _id: "u106",
+          fullname: "Maurizio Ghiraldi",
+          username: "Maurizio.Ghir1",
+          imgUrl: "img/profile/p6/p6.jpg"
+        },
+        txt: "Looks great!",
+      }
+    ],
+    likedBy: [
+      {
+        _id: "u106",
+          fullname: "Maurizio Ghiraldi",
+          username: "Maurizio.Ghir1",
+          imgUrl: "img/profile/p6/p6.jpg"
+      }
+    ],
+    tags: ["vaction"]
+  },
+  {
+    _id: "s133",
+    txt: "H13",
+    timestamp:1687183225000,
+    imgUrl: "img/profile/p8/story/s2.jpg", 
+    by: {
+      _id: "u108",
+      fullname: "Maria lavine",
+      username: "maria78",
+      imgUrl: "img/profile/p8/p8.jpg"
+    },
+    comments: [
+      {
+        id: "c101",
+        by: {
+          _id: "u106",
+          fullname: "Sabina Duxbury",
+          username: "Sabina_Dux28",
+          imgUrl: "img/profile/p6/p6.jpg"
+        },
+        txt: "Cool!",
+      },
+      {
+        id: "c1002",
+        by: {
+          _id: "u106",
+          fullname: "Maurizio Ghiraldi",
+          username: "Maurizio.Ghir1",
+          imgUrl: "img/profile/p6/p6.jpg"
+        },
+        txt: "Nice",
+      }
+    ],
+    likedBy: [
+      {
+        _id: "u106",
+        fullname: "Maurizio Ghiraldi",
+        username: "Maurizio.Ghir1",
+        imgUrl: "img/profile/p6/p6.jpg"
+      },
+      {
+        _id: "u106",
+        fullname: "Sabina Duxbury",
+        username: "Sabina_Dux28",
+        imgUrl: "img/profile/p6/p6.jpg"
+      }
+    ],
+    tags: []
+  },
+  {
+    _id: "s134",
+    txt: "Bridge",
+    timestamp:1687183225000,
+    imgUrl: "img/profile/p3/story/s3.jpg", 
+    by: {
+      _id: "u103",
+      fullname: "Tailor Maiden",
+      username: "tailor.m1",
+      imgUrl: "img/profile/p3/p3.jpg"
+    
+    },
+    comments: [
+      {
+        id: "c101",
+        by: {
+          _id: "u108",
+          fullname: "Maria lavine",
+          username: "maria78",
+          imgUrl: "img/profile/p8/p8.jpg"
+        },
+        txt: "LOL!",
+      },
+      {
+        id: "c1002",
+        by: {
+          _id: "u106",
+          fullname: "Maurizio Ghiraldi",
+          username: "Maurizio.Ghir1",
+          imgUrl: "img/profile/p6/p6.jpg"
+        },
+        txt: "amazing",
+      }
+    ],
+    likedBy: [
+      {
+        _id: "u106",
+        fullname: "Maurizio Ghiraldi",
+        username: "Maurizio.Ghir1",
+        imgUrl: "img/profile/p6/p6.jpg"
+      },
+      {
+        _id: "u106",
+        fullname: "Sabina Duxbury",
+        username: "Sabina_Dux28",
+        imgUrl: "img/profile/p6/p6.jpg"
+      }
+    ],
+    tags: []
+  },
+]
+  /*
   [{
     _id: "p131",
     imgUrl: "img/explore/e1.jpg"
@@ -615,7 +986,7 @@ function getExplore(){
     _id: "p142",
     imgUrl: "img/explore/e12.jpg"
   },
-  ]
+  ]*/
   return explore
 }
 

@@ -17,7 +17,9 @@ export function RootCmp() {
           <Route path="/" element={<StoryIndex />}>
             <Route path="p/:storyId" element={<StoryModal />} />
           </Route>
-          <Route path="explore" element={<ExploreIndex />} />
+          <Route path="explore" element={<ExploreIndex />}>
+            <Route path="p/:storyId" element={<StoryModal />} />
+          </Route>
           <Route path="/:userId" element={<ProfileIndex />}>
             <Route path="p/:storyId" element={<StoryModal />} />
           </Route>
