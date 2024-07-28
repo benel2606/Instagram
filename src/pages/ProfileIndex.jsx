@@ -16,33 +16,71 @@ export function ProfileIndex() {
   const navigate = useNavigate()
   const params = useParams()
   const [toggle, setToggle] = useState("posts")
-  const [loggedInUser, setLoggedInUser] = useState("")
+  //const [loggedInUser, setLoggedInUser] = useState("")
+  const [paramsUser, setParamsUser] = useState("")
+  const loggedInUser = userService.getLoggedinUser()
 
   useEffect(() => {
     loadStories()
   }, [])
 
   useEffect(() => {
-    getLoggedInUser()
+    getUser()
   }, [params.userId])
 
-  async function getLoggedInUser() {
+  async function getUser() {
     const foundUser = await userService.getByUsername(params.userId)
-    setLoggedInUser(foundUser)
+    setParamsUser(foundUser)
   }
 
-  if (!loggedInUser) return <div>loading...</div>
+  if (!paramsUser) return <div>loading...</div>
 
+  async function updateUsers(user) {
+    let followersToSave = [...user.followers]
+    followersToSave.includes(loggedInUser._id)
+      ? followersToSave.pop(loggedInUser._id)
+      : followersToSave.push(loggedInUser._id)
+    const userFollwersToSave = { ...user, followers: followersToSave }
+
+    try {
+      const savedUserFollower = await userService.saveLocalUser(
+        userFollwersToSave
+      )
+      console.log("userFollwersToSave", userFollwersToSave)
+    } catch (err) {
+      console.log("Cannot update followers user" + err)
+    }
+    let fullLoggedInUser = await userService.getById(loggedInUser._id)
+    let followingToSave = [...fullLoggedInUser.following]
+    followingToSave.includes(user._id)
+      ? followingToSave.pop(user._id)
+      : followingToSave.push(user._id)
+    const userFollowingToSave = {
+      ...fullLoggedInUser,
+      following: followingToSave,
+    }
+
+    try {
+      const savedUserFolowing = await userService.saveLocalUser(
+        userFollowingToSave
+      )
+      //setLoggedInUser(userFollowingToSave)
+      console.log("userFollowingToSave", userFollowingToSave)
+      getUser()
+    } catch (err) {
+      console.log("Cannot update following LoggedInUser" + err)
+    }
+  }
   const profileStories = stories.filter(
-    (story) => story.by._id === loggedInUser._id
+    (story) => story.by._id === paramsUser._id
   )
   console.log(profileStories)
   function cancelModal() {
-    navigate(`/${loggedInUser.username}`)
+    navigate(`/${paramsUser.username}`)
     uploadStory()
   }
   function onToggle(sw) {
-    if (!loggedInUser) return
+    if (!paramsUser) return
     setToggle(sw)
   }
   const profileLinks = [
@@ -55,16 +93,36 @@ export function ProfileIndex() {
       <div className="profile-container">
         <header>
           <aside className="profile-img">
-            <img src={loggedInUser.imgUrl}></img>
+            <img src={paramsUser.imgUrl}></img>
           </aside>
           <aside className="profile-details">
             <section className="profile-username">
-              <span>{loggedInUser.username}</span>
-              <div className="button-list">
-                <button>Edit profile</button>
-                <button>View archive</button>
-                <button>Ad tools</button>
-              </div>
+              <span>{paramsUser.username}</span>
+              {loggedInUser._id == paramsUser._id ? (
+                <div className="button-list">
+                  <button>Edit profile</button>
+                  <button>View archive</button>
+                  <button>Ad tools</button>
+                </div>
+              ) : userService.isFollow(paramsUser) ? (
+                <div className="button-list">
+                  <button
+                    className="action"
+                    onClick={() => updateUsers(paramsUser)}
+                  >
+                    Following
+                  </button>
+                </div>
+              ) : (
+                <div className="button-list">
+                  <button
+                    className="following"
+                    onClick={() => updateUsers(paramsUser)}
+                  >
+                    Follow
+                  </button>
+                </div>
+              )}
             </section>
             <section className="profile-counters">
               <div>
@@ -72,17 +130,17 @@ export function ProfileIndex() {
                 <a> posts</a>
               </div>
               <div>
-                <span className="counter">{loggedInUser.followers.length}</span>
+                <span className="counter">{paramsUser.followers.length}</span>
                 <a> followers</a>
               </div>
               <div>
-                <span className="counter">{loggedInUser.following.length}</span>
+                <span className="counter">{paramsUser.following.length}</span>
                 <a> following</a>
               </div>
             </section>
             <section className="profile-more-details">
-              <div className="username">{loggedInUser.username}</div>
-              <div className="bio">{loggedInUser.bio}</div>
+              <div className="username">{paramsUser.username}</div>
+              <div className="bio">{paramsUser.bio}</div>
             </section>
           </aside>
         </header>

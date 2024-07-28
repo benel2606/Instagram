@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom"
+import { userService } from "../services/user.service"
+import { storyService } from "../services/story.service.local"
 
 // import { storyService } from "../../services/story.service.local"
 export function UserDetails({
@@ -7,31 +9,48 @@ export function UserDetails({
   action,
   onClickAction,
   comment,
+  loggedInUser,
+  setLoggedInUser,
+  suggestions,
+  setSuggestions,
 }) {
+  //const loggedInUser = storyService.getLoggedinUser()
   //   const user = storyService.getLoggedinUser()
-  function getSubInfoByAction() {
-    if (action == "Switch") return user.fullname
-    else if (action == "Follow") return "Suggested for you"
-    else if (action == "Time") return "1h"
-    else if (action == "Preview") return user.fullname
-    return ""
+  // function getSubInfoByAction() {
+  //   if (action == "Switch") return user.fullname
+  //   else if (action == "Follow") return "Suggested for you"
+  //   else if (action == "Time") return "1h"
+  //   else if (action == "Preview") return user.fullname
+  //   return ""
+  // }
+  async function updateUsers(user) {
+    let followersToSave = [...user.followers]
+    followersToSave.push(loggedInUser._id)
+    const userFollwersToSave = { ...user, followers: followersToSave }
+    try {
+      const savedUserFollower = await userService.saveLocalUser(
+        userFollwersToSave
+      )
+      console.log("userFollwersToSave", userFollwersToSave)
+    } catch (err) {
+      console.log("Cannot update followers user" + err)
+    }
+
+    let followingToSave = [...loggedInUser.following]
+    followingToSave.push(user._id)
+    const userFollowingToSave = { ...loggedInUser, following: followingToSave }
+
+    try {
+      const savedUserFolowing = await userService.saveLocalUser(
+        userFollowingToSave
+      )
+      setLoggedInUser(userFollowingToSave)
+      console.log("userFollowingToSave", userFollowingToSave)
+    } catch (err) {
+      console.log("Cannot update following LoggedInUser" + err)
+    }
   }
   return (
-    // <header className="user-details">
-    //   <div className="main-user-info">
-    //     <img className="main-user-img" src={`img${user.imgUrl}`} />
-    //     <div className="main-user-details">
-    //       <a>{user.username}</a>
-    //       <span>{getSubInfoByAction()}</span>
-    //     </div>
-    //   </div>
-    //   {action == "Switch" || action == "Follow" ? (
-    //     <a className="main-user-action">{action}</a>
-    //   ) : (
-    //     ""
-    //   )}
-    // </header>
-
     <header className="user-details">
       <div className="main-user-info">
         <img className="main-user-img" src={user.imgUrl} />
@@ -45,7 +64,7 @@ export function UserDetails({
           <span className="under-user">{underUser}</span>
         </div>
       </div>
-      {action !== "" ? <a className="main-user-action">{action}</a> : ""}
+      {action !== "" ? <div className="main-user-action">{action}</div> : ""}
     </header>
   )
 }

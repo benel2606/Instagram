@@ -13,12 +13,14 @@ export const userService = {
     remove,
     update,
     changeScore,
-    getByUsername
+    getByUsername,
+    getSuggestions,
+    isFollow
 }
 const STORAGE_KEY_USER = 'user'
+const STORAGE_KEY_LOGGEDIN_USER = 'loggedInuser'
 window.userService = userService
 _createUsers()
-
 
 async function getUsers() {
     var users = await storageService.query(STORAGE_KEY_USER)
@@ -87,11 +89,11 @@ async function changeScore(by) {
     return user.score
 }
 
-
-function saveLocalUser(user) {
-    user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, score: user.score, isAdmin : user.isAdmin }
-    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
-    return user
+async function saveLocalUser(user) {
+    const userToSave = { _id: user._id, fullname: user.fullname,username:user.username, imgUrl: user.imgUrl, following: user.following, followers : user.followers,savedStoryIds:user.savedStoryIds,bio:user.bio }
+    //sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+    const savedUser = await storageService.put(STORAGE_KEY_USER, userToSave)
+    return savedUser
 }
 
 // function getLoggedinUser() {
@@ -111,11 +113,23 @@ function getLoggedinUser(){
       fullname: "Benel Aharon",
       username: "ben_aharon",
       imgUrl: "img/profile/p10/p10.jpg",
-      bio: "love coding with React",
-      following: ['u101', 'u102', 'u103'],
-      followers: ['u101'],
-      savedStoryIds: [],
+      //bio: "love coding with React",
+      //following: ['u101', 'u102', 'u103'],
+      //followers: ['u101'],
+      //savedStoryIds: [],
     }
+    // const loggedInUser={
+    //       _id: "u10",
+    //       fullname: "Benel Aharon",
+    //       username: "ben_aharon",
+    //       imgUrl: "img/profile/p10/p10.jpg",
+    //       bio: "love coding with React",
+    //       following: ['u101', 'u102', 'u103'],
+    //       followers: ['u101'],
+    //       savedStoryIds: [],
+    //     }
+    // utilService.saveToStorage(STORAGE_KEY_LOGGEDIN_USER, loggedInUser)
+    //return loggedInUser
   }
   function _createUsers(){
   let users = utilService.loadFromStorage(STORAGE_KEY_USER)
@@ -127,7 +141,7 @@ function getLoggedinUser(){
             username: "ben_aharon",
             imgUrl: "img/profile/p10/p10.jpg",
             bio: "Love coding with React",
-            following: ['u101', 'u106', 'u103'],
+            following: ['u101', 'u106'],
             followers: ['u101'],
             savedStoryIds: [],
         },
@@ -213,4 +227,56 @@ function getLoggedinUser(){
           }
     ]}
     utilService.saveToStorage(STORAGE_KEY_USER, users)
+  }
+
+  function xgetSuggestions(){
+    const suggestions=
+    [{
+        _id: "u108",
+        fullname: "Maria lavine",
+        username: "maria78",
+        imgUrl: "img/profile/p8/p8.jpg",
+        bio: "Be kind. work hard",
+        following: ['u10', 'u102', 'u103'],
+        followers: ['u102','u103'],
+        savedStoryIds: [],
+      },
+      {
+        _id: "u107",
+        fullname: "Elan Shewring",
+        username: "Elanaaa",
+        imgUrl: "img/profile/p7/p7.jpg",
+        bio: "Be the hero of own story",
+        following: ['u10', 'u102', 'u103','u104'],
+        followers: ['u102','u103','u104'],
+        savedStoryIds: [],
+      },
+      {
+        _id: "u103",
+        fullname: "Dirk Earles",
+        username: "Dir8787",
+        imgUrl: "img/profile/p3/p3.jpg",
+        bio: "Pizza addict!",
+        following: ['u10', 'u102', 'u103'],
+        followers: ['u102','u105'],
+        savedStoryIds: [],
+      },]
+    
+    return suggestions
+  }
+  async function getSuggestions(){
+    let suggestionArr=[]
+    //const getFullUser=async (userId)=>await getById(userId)
+    const suggetionsUsersId=["u103","u107","u108"]
+    suggetionsUsersId.map(async (suggetionsId)=>{
+        suggestionArr.push(await getById(suggetionsId))
+    })
+    console.log(suggestionArr)
+    return suggestionArr
+  }
+  
+  function isFollow(user) {
+    const loggedInUser=getLoggedinUser()
+    return user.followers.includes(loggedInUser._id)
+   
   }

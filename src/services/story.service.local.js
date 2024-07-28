@@ -28,10 +28,10 @@ function getLoggedinUser(){
     fullname: "Benel Aharon",
     username: "ben_aharon",
     imgUrl: "img/profile/p10/p10.jpg",
-    bio: "love coding with React",
-    following: ['u101', 'u102', 'u103'],
-    followers: ['u101'],
-    savedStoryIds: [],
+    //bio: "love coding with React",
+    //following: ['u101', 'u102', 'u103'],
+    //followers: ['u101'],
+    //savedStoryIds: [],
   }
 }
 
@@ -218,7 +218,7 @@ function _createStories() {
           {
             _id: "s103",
             txt: "Best trip ever",
-            timestamp:1681924525000,
+            timestamp:1709299430000,
             imgUrl: "img/profile/p2/story/s2.jpg", 
             by: {
               _id: "u102",
@@ -267,7 +267,7 @@ function _createStories() {
         {
           _id: "s104",
           txt: "Love",
-          timestamp:1679238025000,
+          timestamp:1712406230000,
           imgUrl: "img/profile/p4/story/s1.jpg", 
           by: {
             _id: "u104",
@@ -316,7 +316,7 @@ function _createStories() {
         {
           _id: "s105",
           txt: "good vibes!",
-          timestamp:1719392425000,
+          timestamp:1705755650000,
           imgUrl: "img/profile/p10/story/s1.jpg", 
           by: {
             _id: "u10",
@@ -365,7 +365,7 @@ function _createStories() {
         {
           _id: "s106",
           txt: "Best trip!",
-          timestamp:1719392425000,
+          timestamp:1708434050000,
           imgUrl: "img/profile/p10/story/s2.jpg", 
           by: {
             _id: "u10",
@@ -414,7 +414,7 @@ function _createStories() {
         {
           _id: "s107",
           txt: "Cook and love",
-          timestamp:1719392425000,
+          timestamp:1718884850000,
           imgUrl: "img/profile/p10/story/s3.jpg", 
           by: {
             _id: "u10",
@@ -463,7 +463,7 @@ function _createStories() {
         {
           _id: "s108",
           txt: "vaction",
-          timestamp:1719392425000,
+          timestamp:1705323650000,
           imgUrl: "img/profile/p10/story/s4.jpg", 
           by: {
             _id: "u10",
@@ -512,7 +512,7 @@ function _createStories() {
         {
           _id: "s131",
           txt: "In Love!",
-          timestamp:1687183225000,
+          timestamp:1718452850000,
           imgUrl: "img/profile/p4/story/s2.jpg", 
           by: {
             _id: "u104",
@@ -555,7 +555,7 @@ function _createStories() {
         {
           _id: "s132",
           txt: "Italy",
-          timestamp:1687183225000,
+          timestamp:1705636850000,
           imgUrl: "img/profile/p7/story/s2.jpg", 
           by: {
             _id: "u107",
@@ -598,7 +598,7 @@ function _createStories() {
         {
           _id: "s133",
           txt: "H13",
-          timestamp:1687183225000,
+          timestamp:1711339250000,
           imgUrl: "img/profile/p8/story/s2.jpg", 
           by: {
             _id: "u108",
@@ -647,7 +647,7 @@ function _createStories() {
         {
           _id: "s134",
           txt: "Bridge",
-          timestamp:1687183225000,
+          timestamp:1716606050000,
           imgUrl: "img/profile/p3/story/s3.jpg", 
           by: {
             _id: "u103",
@@ -699,7 +699,7 @@ function _createStories() {
         utilService.saveToStorage(STORAGE_KEY, stories)
     }
 
-function formatTime(timestamp) {
+function xformatTime(timestamp) {
       const currentTime = new Date();
       const postTime = new Date(timestamp); // Convert timestamp to milliseconds
   
@@ -719,6 +719,27 @@ function formatTime(timestamp) {
           return postTime.toLocaleDateString('en-US' , options);
       }
   }
+  function formatTime(timestamp) {
+    const now = Date.now();
+    const difference = now - timestamp;
+    const seconds = Math.floor(difference / 1000);
+    const minutes = Math.floor(difference / (1000 * 60));
+    const hours = Math.floor(difference / (1000 * 60 * 60));
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+
+    if (seconds < 60) {
+        return `${seconds} seconds ago`;
+    } else if (minutes < 60) {
+        return `${minutes} minutes ago`;
+    } else if (hours < 24) {
+        return `${hours} hours ago`;
+    } else if (days < 7) {
+        return `${days} days ago`;
+    } else {
+        const date = new Date(timestamp);
+        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
+}
 
 function createComment(txt) {
     return {

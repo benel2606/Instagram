@@ -60,6 +60,13 @@
     button:hover {
         background: $clr5;
     }
+    button.following {
+        background:$clr2;
+        color: $clr6;
+    }
+    button.following:hover {
+        background: $clr10-follow-hover;
+    }
 }
 
 .profile-index .profile-container header .profile-details .profile-counters{
