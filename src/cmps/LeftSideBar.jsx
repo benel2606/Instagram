@@ -39,12 +39,12 @@ export function LeftSideBar() {
           <span className="sidbar-name">Home</span>
         </NavLink>
 
-        <Link className="sidebar-btn" to="">
+        {/* <Link className="sidebar-btn" to="">
           <span className="sidbar-icon">
             <GoSearch className="icons" />
           </span>
           <span className="sidbar-name">Search</span>
-        </Link>
+        </Link> */}
 
         <NavLink className="sidebar-btn" to="explore">
           <span className="sidbar-icon">
@@ -58,7 +58,7 @@ export function LeftSideBar() {
           <span className="sidbar-name">Explore</span>
         </NavLink>
 
-        <NavLink className="sidebar-btn" to="inbox">
+        {/* <NavLink className="sidebar-btn" to="inbox">
           <span className="sidbar-icon">
             {isActive("/inbox") ? (
               <RiMessengerFill className="icons" />
@@ -67,14 +67,14 @@ export function LeftSideBar() {
             )}
           </span>
           <span className="sidbar-name">Messages</span>
-        </NavLink>
+        </NavLink> */}
 
-        <Link className="sidebar-btn" to="">
+        {/* <Link className="sidebar-btn" to="">
           <span className="sidbar-icon">
             <IoMdHeartEmpty className="icons" />
           </span>
           <span className="sidbar-name">Notifications</span>
-        </Link>
+        </Link> */}
 
         <div className="sidebar-btn" onClick={() => setOpenCreateModal(true)}>
           <span className="sidbar-icon">
