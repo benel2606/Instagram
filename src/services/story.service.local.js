@@ -555,13 +555,13 @@ function _createStories() {
         {
           _id: "s132",
           txt: "Italy",
-          timestamp:1705636850000,
-          imgUrl: "img/profile/p7/story/s2.jpg", 
+          timestamp:1687183225000,
+          imgUrl: "img/profile/p5/story/s2.jpg", 
           by: {
-            _id: "u107",
-            fullname: "Elan Shewring",
-            username: "Elanaaa",
-            imgUrl: "img/profile/p7/p7.jpg"
+            _id: "u105",
+            fullname: "Kingsly Traylen",
+            username: "Kingsly123",
+            imgUrl: "img/profile/p5/p5.jpg"
           },
           comments: [
             {
@@ -598,7 +598,7 @@ function _createStories() {
         {
           _id: "s133",
           txt: "H13",
-          timestamp:1711339250000,
+          timestamp:1687183225000,
           imgUrl: "img/profile/p8/story/s2.jpg", 
           by: {
             _id: "u108",
@@ -647,7 +647,7 @@ function _createStories() {
         {
           _id: "s134",
           txt: "Bridge",
-          timestamp:1716606050000,
+          timestamp:1687183225000,
           imgUrl: "img/profile/p3/story/s3.jpg", 
           by: {
             _id: "u103",
