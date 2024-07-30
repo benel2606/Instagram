@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { ExploreList } from "../cmps/Explore/ExploreList"
 import { storyService } from "../services/story.service.local"
+import { uploadStory } from "../store/story.actions"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { StoryModal } from "../cmps/Story/StoryModal"
 
