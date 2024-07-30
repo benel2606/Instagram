@@ -31,7 +31,6 @@ export function UserDetails({
       const savedUserFollower = await userService.saveLocalUser(
         userFollwersToSave
       )
-      console.log("userFollwersToSave", userFollwersToSave)
     } catch (err) {
       console.log("Cannot update followers user" + err)
     }
@@ -45,7 +44,6 @@ export function UserDetails({
         userFollowingToSave
       )
       setLoggedInUser(userFollowingToSave)
-      console.log("userFollowingToSave", userFollowingToSave)
     } catch (err) {
       console.log("Cannot update following LoggedInUser" + err)
     }

@@ -10,7 +10,6 @@ export function ExploreIndex() {
   const navigate = useNavigate()
   const params = useParams()
 
-  console.log("ExploreIndex")
   const OuterComponent = (props) => (
     <div className="column">{this.props.children}</div>
   )

@@ -1,9 +1,6 @@
-// import { useNavigate } from "react-router"
 import { GoHome, GoSearch } from "react-icons/go"
 import { MdOutlineExplore, MdExplore } from "react-icons/md"
 import { RiMessengerLine, RiMessengerFill, RiAddBoxLine } from "react-icons/ri"
-import { IoMdHeartEmpty } from "react-icons/io"
-import { CgProfile } from "react-icons/cg"
 import { FaRegUserCircle, FaUserCircle } from "react-icons/fa"
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom"
 import { GoHomeFill } from "react-icons/go"
@@ -15,11 +12,9 @@ export function LeftSideBar() {
   const location = useLocation()
   const [openCreateModal, setOpenCreateModal] = useState(false)
   function onGoto(path) {
-    console.log("onGoto")
     navigate(`/Instagram/${path}`)
   }
   const isActive = (path) => location.pathname == path
-  console.log(location)
   return (
     <header className="left-side-bar">
       <nav>
@@ -54,7 +49,6 @@ export function LeftSideBar() {
               <MdOutlineExplore className="icons" />
             )}
           </span>
-          {/* <span className={`material-symbols-outlined ${isActive("/explore") ? "fill" : ""}`}> explore </span>*/}
           <span className="sidbar-name">Explore</span>
         </NavLink>
 

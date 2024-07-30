@@ -10,7 +10,6 @@ export function StoryFooter({ story, setStory }) {
   const [inputTxt, setInputTxt] = useState("")
   function handleChange(ev) {
     setInputTxt(ev.target.value)
-    console.log(inputTxt)
   }
 
   async function handleComment(ev) {

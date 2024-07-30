@@ -46,7 +46,6 @@ export function ProfileIndex() {
       const savedUserFollower = await userService.saveLocalUser(
         userFollwersToSave
       )
-      console.log("userFollwersToSave", userFollwersToSave)
     } catch (err) {
       console.log("Cannot update followers user" + err)
     }
@@ -65,7 +64,6 @@ export function ProfileIndex() {
         userFollowingToSave
       )
       //setLoggedInUser(userFollowingToSave)
-      console.log("userFollowingToSave", userFollowingToSave)
       getUser()
     } catch (err) {
       console.log("Cannot update following LoggedInUser" + err)

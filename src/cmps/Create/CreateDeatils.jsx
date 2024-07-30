@@ -36,7 +36,6 @@ export function CreateDetails({ newStory, setNewStory, image, handleCancel }) {
       imgUrl: image,
       timestamp: new Date().getTime(),
     }))
-    console.log("onSaveStory", newStory)
     addStory(newStory).then(() => {
       handleCancel()
       loadStories()

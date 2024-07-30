@@ -26,8 +26,6 @@ export function Suggestions() {
   if (!loggedInUser) return <div></div>
   if (!suggestions) return <div></div>
 
-  console.log("render-loggedInUser", loggedInUser)
-  console.log("render-suggestions", suggestions)
   return (
     <header className="suggestions">
       <UserDetails

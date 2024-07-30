@@ -32,10 +32,8 @@ export function StoryIndex() {
     if (storyId) {
       loadStory(storyId)
       //getStoryById()
-      console.log("story-useEffect", story)
     }
   }, [storyId])
-  console.log("story", story)
   async function getStoryById() {
     const storyToLoad = await storyService.getById(storyId)
     setStory(storyToLoad)
